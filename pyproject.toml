@@ -1,0 +1,29 @@
+[project]
+name = "unidata-blocks"
+version = "0.0.0"
+description = "A library that helps query unicode blocks by Blocks.txt."
+readme = "README.md"
+license = { text = "MIT License" }
+requires-python = ">=3.10"
+authors = [
+    { name = "TakWolf" },
+]
+maintainers = [
+    { name = "TakWolf" },
+]
+keywords = ["unicode"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+homepage = "https://github.com/TakWolf/unidata-blocks"
+source = "https://github.com/TakWolf/unidata-blocks"
+issues = "https://github.com/TakWolf/unidata-blocks/issues"
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "src",
+]
