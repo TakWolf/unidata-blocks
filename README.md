@@ -4,6 +4,12 @@
 
 A library that helps query unicode blocks by [Blocks.txt](https://www.unicode.org/Public/UNIDATA/Blocks.txt).
 
+## Installation
+
+```commandline
+pip install unidata-blocks
+```
+
 ## License
 
 Under the [MIT license](LICENSE).
