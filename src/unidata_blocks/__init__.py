@@ -44,10 +44,7 @@ class UnicodeBlock:
     def name_localized(self, locale: str) -> str | None:
         if locale == 'en':
             return self.name
-        localized_names = _get_localized_names(locale)
-        if localized_names is None:
-            return None
-        return localized_names.get(self.name, None)
+        return _get_localized_names(locale).get(self.name, None)
 
 
 def _load_blocks() -> tuple[str, list[UnicodeBlock]]:
