@@ -45,3 +45,7 @@ def get_block_by_code_point(code_point: int) -> UnicodeBlock | None:
 
 def get_block_by_name(name: str) -> UnicodeBlock | None:
     return _name_to_block.get(name.lower().replace(' ', '_').replace('-', '_'), None)
+
+
+def get_block_by_chr(c: str) -> UnicodeBlock | None:
+    return get_block_by_code_point(ord(c))
