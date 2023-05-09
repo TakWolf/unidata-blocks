@@ -1,12 +1,12 @@
 import unidata_blocks
 
 
-def test_0():
+def test_no_block():
     assert unidata_blocks.get_block_by_code_point(-1) is None
     assert unidata_blocks.get_block_by_code_point(0x999999) is None
 
 
-def test_1():
+def test_code_point_query():
     block = unidata_blocks.get_block_by_code_point(30)
     assert block.code_start == 0x0000
     assert block.code_end == 0x007F
@@ -14,8 +14,6 @@ def test_1():
     assert block.capacity == 128
     assert block.printable_count == 95
 
-
-def test_2():
     block = unidata_blocks.get_block_by_code_point(130)
     assert block.code_start == 0x0080
     assert block.code_end == 0xFF
@@ -24,7 +22,7 @@ def test_2():
     assert block.printable_count == 94
 
 
-def test_3():
+def test_name_query():
     block = unidata_blocks.get_block_by_name('CJK Unified Ideographs')
     assert block.code_start == 0x4E00
     assert block.code_end == 0x9FFF
@@ -35,15 +33,13 @@ def test_3():
     assert block == unidata_blocks.get_block_by_name('CJK UNIFIED IDEOGRAPHS')
 
 
-def test_4():
+def test_chr_query():
     block = unidata_blocks.get_block_by_chr('A')
     assert block.code_start == 0x0000
     assert block.code_end == 0x007F
     assert block.name == 'Basic Latin'
     assert block == unidata_blocks.get_block_by_chr('B')
 
-
-def test_5():
     block = unidata_blocks.get_block_by_chr('汉')
     assert block.code_start == 0x4E00
     assert block.code_end == 0x9FFF
@@ -51,7 +47,21 @@ def test_5():
     assert block == unidata_blocks.get_block_by_chr('字')
 
 
-def test_6():
+def test_all_query():
     blocks = unidata_blocks.get_blocks()
     assert len(blocks) > 0
     assert blocks[0].name == 'Basic Latin'
+
+
+def test_to_str():
+    block = unidata_blocks.get_block_by_code_point(0x0000)
+    assert str(block) == '0000..007F; Basic Latin'
+
+    block = unidata_blocks.get_block_by_code_point(0x4E00)
+    assert str(block) == '4E00..9FFF; CJK Unified Ideographs'
+
+    block = unidata_blocks.get_block_by_code_point(0xF0000)
+    assert str(block) == 'F0000..FFFFF; Supplementary Private Use Area-A'
+
+    block = unidata_blocks.get_block_by_code_point(0x100000)
+    assert str(block) == '100000..10FFFF; Supplementary Private Use Area-B'
