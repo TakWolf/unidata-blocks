@@ -1,6 +1,10 @@
 import unidata_blocks
 
 
+def test_unicode_version():
+    assert unidata_blocks.unicode_version == '15.0.0'
+
+
 def test_no_block():
     assert unidata_blocks.get_block_by_code_point(-1) is None
     assert unidata_blocks.get_block_by_code_point(0x999999) is None
