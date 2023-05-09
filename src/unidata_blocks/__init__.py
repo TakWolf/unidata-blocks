@@ -49,3 +49,7 @@ def get_block_by_name(name: str) -> UnicodeBlock | None:
 
 def get_block_by_chr(c: str) -> UnicodeBlock | None:
     return get_block_by_code_point(ord(c))
+
+
+def get_blocks() -> list[UnicodeBlock]:
+    return list(_blocks)

@@ -49,3 +49,9 @@ def test_5():
     assert block.code_end == 0x9FFF
     assert block.name == 'CJK Unified Ideographs'
     assert block == unidata_blocks.get_block_by_chr('字')
+
+
+def test_6():
+    blocks = unidata_blocks.get_blocks()
+    assert len(blocks) > 0
+    assert blocks[0].name == 'Basic Latin'
