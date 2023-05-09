@@ -1,6 +1,30 @@
 import pkgutil
 import re
 
+_locale_to_localized_names = {}
+
+
+def _get_localized_names(locale: str) -> dict[str, str]:
+    locale = locale.lower().replace('_', '-')
+    if locale in _locale_to_localized_names:
+        return _locale_to_localized_names[locale]
+    localized_names = {}
+    try:
+        data = pkgutil.get_data(__package__, f'unidata/i18n/{locale}.txt')
+    except FileNotFoundError:
+        data = None
+    if data is not None:
+        lines = data.decode(encoding='utf-8').split('\n')
+        for line in lines:
+            line = line.split('#', 1)[0].strip()
+            if line == '':
+                continue
+            tokens = re.split(r':\s', line)
+            if len(tokens) >= 2:
+                localized_names[tokens[0]] = tokens[1]
+    _locale_to_localized_names[locale] = localized_names
+    return localized_names
+
 
 class UnicodeBlock:
     def __init__(self, code_start: int, code_end: int, name: str):
@@ -16,6 +40,14 @@ class UnicodeBlock:
 
     def __str__(self):
         return f'{self.code_start:04X}..{self.code_end:04X}; {self.name}'
+
+    def name_localized(self, locale: str) -> str | None:
+        if locale == 'en':
+            return self.name
+        localized_names = _get_localized_names(locale)
+        if localized_names is None:
+            return None
+        return localized_names.get(self.name, None)
 
 
 def _load_blocks() -> tuple[str, list[UnicodeBlock]]:
