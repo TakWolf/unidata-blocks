@@ -2,18 +2,18 @@ import os.path
 
 import requests
 
-import unidata_blocks
+from tools import blocks_doc_url, unidata_dir, blocks_file_path
 
 
 def main():
-    response = requests.get(unidata_blocks.blocks_doc_url)
+    response = requests.get(blocks_doc_url)
     assert response.ok
     assert 'text/plain' in response.headers['Content-Type']
 
-    if not os.path.exists(unidata_blocks.unidata_dir):
-        os.makedirs(unidata_blocks.unidata_dir)
+    if not os.path.exists(unidata_dir):
+        os.makedirs(unidata_dir)
 
-    with open(unidata_blocks.blocks_file_path, 'w', encoding='utf-8') as file:
+    with open(blocks_file_path, 'w', encoding='utf-8') as file:
         file.write(response.text)
 
 
