@@ -14,6 +14,9 @@ class UnicodeBlock:
             if c.isprintable():
                 self.printable_count += 1
 
+    def __str__(self):
+        return f'{self.code_start:04X}..{self.code_end:04X}; {self.name}'
+
 
 def _load_blocks() -> tuple[str, list[UnicodeBlock]]:
     blocks = []
