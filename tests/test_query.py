@@ -36,6 +36,14 @@ def test_3():
 
 
 def test_4():
+    block = unidata_blocks.get_block_by_chr('A')
+    assert block.code_start == 0x0000
+    assert block.code_end == 0x007F
+    assert block.name == 'Basic Latin'
+    assert block == unidata_blocks.get_block_by_chr('B')
+
+
+def test_5():
     block = unidata_blocks.get_block_by_chr('汉')
     assert block.code_start == 0x4E00
     assert block.code_end == 0x9FFF
