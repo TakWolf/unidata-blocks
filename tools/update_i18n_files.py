@@ -32,6 +32,7 @@ def main():
                     file.write(f'{block.name}: {localized_names[block.name]}\n')
                 else:
                     file.write(f'{block.name}:\n')
+                    print(f'{i18n_file_name} {block}')
 
 
 if __name__ == '__main__':
