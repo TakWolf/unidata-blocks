@@ -17,6 +17,7 @@ def main():
         i18n_tmp_file_path = os.path.join(i18n_tmp_dir, i18n_file_name)
 
         with open(i18n_tmp_file_path, 'w', encoding='utf-8') as file:
+            file.write(f'# Unicode: {unidata_blocks.unicode_version}\n')
             file.write(f'# {i18n_file_name}\n\n')
             for block in unidata_blocks.get_blocks():
                 localized_name = block.name_localized(locale)

@@ -1,3 +1,4 @@
+# Unicode: 15.0.0
 # zh-cn.txt
 
 Basic Latin: 基本拉丁
