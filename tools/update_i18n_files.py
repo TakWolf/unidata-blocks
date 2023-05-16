@@ -1,38 +1,34 @@
 import os
-import re
+import shutil
 
 import unidata_blocks
-from tools import i18n_dir
-
-
-def load_localized_names(i18n_file_path: str | bytes | os.PathLike[str] | os.PathLike[bytes]):
-    localized_names = {}
-    with open(i18n_file_path, 'r', encoding='utf-8') as file:
-        for line in file.readlines():
-            line = line.split('#', 1)[0].strip()
-            if line == '':
-                continue
-            tokens = re.split(r':\s', line)
-            if len(tokens) >= 2:
-                localized_names[tokens[0]] = tokens[1]
-    return localized_names
+from tools import i18n_dir, tmp_dir, i18n_tmp_dir, i18n_old_dir
 
 
 def main():
+    if os.path.exists(tmp_dir):
+        shutil.rmtree(tmp_dir)
+    os.makedirs(i18n_tmp_dir)
+
     for i18n_file_name in os.listdir(i18n_dir):
         if not i18n_file_name.endswith('.txt'):
             continue
-        i18n_file_path = os.path.join(i18n_dir, i18n_file_name)
-        localized_names = load_localized_names(i18n_file_path)
+        locale = i18n_file_name.removesuffix('.txt')
+        i18n_tmp_file_path = os.path.join(i18n_tmp_dir, i18n_file_name)
 
-        with open(i18n_file_path, 'w', encoding='utf-8') as file:
+        with open(i18n_tmp_file_path, 'w', encoding='utf-8') as file:
             file.write(f'# {i18n_file_name}\n\n')
             for block in unidata_blocks.get_blocks():
-                if block.name in localized_names:
-                    file.write(f'{block.name}: {localized_names[block.name]}\n')
-                else:
+                localized_name = block.name_localized(locale)
+                if localized_name is None:
                     file.write(f'{block.name}:\n')
                     print(f'{i18n_file_name} {block}')
+                else:
+                    file.write(f'{block.name}: {localized_name}\n')
+
+    os.rename(i18n_dir, i18n_old_dir)
+    os.rename(i18n_tmp_dir, i18n_dir)
+    shutil.rmtree(i18n_old_dir)
 
 
 if __name__ == '__main__':
