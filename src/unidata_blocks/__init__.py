@@ -5,7 +5,6 @@ _locale_to_localized_names: dict[str, dict[str, str]] = {}
 
 
 def _get_localized_names(locale: str) -> dict[str, str]:
-    locale = locale.lower().replace('_', '-')
     if locale in _locale_to_localized_names:
         return _locale_to_localized_names[locale]
     localized_names = {}
@@ -42,6 +41,7 @@ class UnicodeBlock:
         return f'{self.code_start:04X}..{self.code_end:04X}; {self.name}'
 
     def name_localized(self, locale: str) -> str | None:
+        locale = locale.lower().replace('_', '-')
         if locale == 'en':
             return self.name
         return _get_localized_names(locale).get(self.name, None)
