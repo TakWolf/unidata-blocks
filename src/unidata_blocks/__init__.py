@@ -63,8 +63,12 @@ def _load_blocks() -> tuple[str, list[UnicodeBlock]]:
     return version, blocks
 
 
+def _normalize_block_name(name: str) -> str:
+    return name.lower().replace('-', ' ').replace('_', ' ')
+
+
 unicode_version, _blocks = _load_blocks()
-_name_to_block: dict[str, UnicodeBlock] = {block.name.lower().replace(' ', '_').replace('-', '_'): block for block in _blocks}
+_name_to_block: dict[str, UnicodeBlock] = {_normalize_block_name(block.name): block for block in _blocks}
 
 
 def get_block_by_code_point(code_point: int) -> UnicodeBlock | None:
@@ -76,7 +80,7 @@ def get_block_by_code_point(code_point: int) -> UnicodeBlock | None:
 
 
 def get_block_by_name(name: str) -> UnicodeBlock | None:
-    return _name_to_block.get(name.lower().replace(' ', '_').replace('-', '_'), None)
+    return _name_to_block.get(_normalize_block_name(name), None)
 
 
 def get_block_by_chr(c: str) -> UnicodeBlock | None:
