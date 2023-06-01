@@ -1,7 +1,7 @@
 import pkgutil
 import re
 
-_locale_to_localized_names = {}
+_locale_to_localized_names: dict[str, dict[str, str]] = {}
 
 
 def _get_localized_names(locale: str) -> dict[str, str]:
@@ -64,7 +64,7 @@ def _load_blocks() -> tuple[str, list[UnicodeBlock]]:
 
 
 unicode_version, _blocks = _load_blocks()
-_name_to_block = {block.name.lower().replace(' ', '_').replace('-', '_'): block for block in _blocks}
+_name_to_block: dict[str, UnicodeBlock] = {block.name.lower().replace(' ', '_').replace('-', '_'): block for block in _blocks}
 
 
 def get_block_by_code_point(code_point: int) -> UnicodeBlock | None:
