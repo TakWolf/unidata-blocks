@@ -1,7 +1,7 @@
 import pkgutil
 import re
 
-_locale_to_localized_names: dict[str, dict[str, str]] = {}
+_locale_to_localized_names = dict[str, dict[str, str]]()
 
 
 def _get_localized_names(locale: str) -> dict[str, str]:
