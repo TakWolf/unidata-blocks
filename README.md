@@ -7,7 +7,7 @@ A library that helps query unicode blocks by [Blocks.txt](https://www.unicode.or
 
 ## Installation
 
-```commandline
+```shell
 pip install unidata-blocks
 ```
 
