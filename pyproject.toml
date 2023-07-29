@@ -18,6 +18,10 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+dependencies = [
+    "langcodes>=3.3.0",
+]
+
 [project.urls]
 homepage = "https://github.com/TakWolf/unidata-blocks"
 source = "https://github.com/TakWolf/unidata-blocks"

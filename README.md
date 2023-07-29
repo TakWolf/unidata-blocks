@@ -22,6 +22,10 @@ assert block.code_end == 0x007F
 assert block.name == 'Basic Latin'
 ```
 
+## Dependencies
+
+- [Langcodes](https://github.com/rspeer/langcodes)
+
 ## License
 
 Under the [MIT license](LICENSE).
