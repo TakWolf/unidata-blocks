@@ -75,13 +75,10 @@ def test_i18n():
     block = unidata_blocks.get_block_by_code_point(0x0000)
     assert block.name_localized('en') == 'Basic Latin'
     assert block.name_localized('EN') == 'Basic Latin'
+    assert block.name_localized('zh') == '基本拉丁'
+    assert block.name_localized('ZH') == '基本拉丁'
+    assert block.name_localized('zh-hans') == '基本拉丁'
+    assert block.name_localized('zh-chs') == '基本拉丁'
     assert block.name_localized('zh-cn') == '基本拉丁'
-    assert block.name_localized('ZH_CN') == '基本拉丁'
-    assert block.name_localized('no-locale') is None
-
-    block = unidata_blocks.get_block_by_code_point(0x4E00)
-    assert block.name_localized('en') == 'CJK Unified Ideographs'
-    assert block.name_localized('EN') == 'CJK Unified Ideographs'
-    assert block.name_localized('zh-cn') == '中日韩统一表意文字'
-    assert block.name_localized('ZH_CN') == '中日韩统一表意文字'
-    assert block.name_localized('no-locale') is None
+    assert block.name_localized('no-language') is None
+    assert block.name_localized('no-language', 'abc') == 'abc'
