@@ -1,5 +1,5 @@
 # Unicode: 15.0.0
-# zh-cn.txt
+# zh-Hans
 
 Basic Latin: 基本拉丁
 Latin-1 Supplement: 拉丁-1 增补
