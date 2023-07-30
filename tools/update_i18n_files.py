@@ -2,12 +2,12 @@ import os
 import shutil
 
 import unidata_blocks
-from tools import i18n_dir, tmp_dir, i18n_tmp_dir, i18n_old_dir
+from tools import i18n_dir, i18n_tmp_dir
 
 
 def main():
-    if os.path.exists(tmp_dir):
-        shutil.rmtree(tmp_dir)
+    if os.path.exists(i18n_tmp_dir):
+        shutil.rmtree(i18n_tmp_dir)
     os.makedirs(i18n_tmp_dir)
 
     for i18n_file_name in os.listdir(i18n_dir):
@@ -27,9 +27,8 @@ def main():
                 else:
                     file.write(f'{block.name}: {localized_name}\n')
 
-    os.rename(i18n_dir, i18n_old_dir)
+    shutil.rmtree(i18n_dir)
     os.rename(i18n_tmp_dir, i18n_dir)
-    shutil.rmtree(i18n_old_dir)
 
 
 if __name__ == '__main__':
