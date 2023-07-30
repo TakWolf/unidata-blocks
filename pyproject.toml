@@ -28,7 +28,7 @@ source = "https://github.com/TakWolf/unidata-blocks"
 issues = "https://github.com/TakWolf/unidata-blocks/issues"
 
 [tool.setuptools]
-package-data = { "unidata_blocks" = ["unidata/*.txt", "unidata/i18n/*.txt"] }
+package-data = { "unidata_blocks" = ["unidata/*.txt", "unidata/translations/*.txt"] }
 
 [tool.pytest.ini_options]
 pythonpath = [
