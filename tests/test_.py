@@ -2,7 +2,7 @@ import unidata_blocks
 
 
 def test_unicode_version():
-    assert unidata_blocks.unicode_version == '15.0.0'
+    assert unidata_blocks.unicode_version == '15.1.0'
 
 
 def test_no_block():
