@@ -1,4 +1,4 @@
-# Unicode: 15.0.0
+# Unicode: 15.1.0
 # zh-Hans
 
 Basic Latin: 基本拉丁
@@ -321,6 +321,7 @@ CJK Unified Ideographs Extension C: 中日韩统一表意文字扩充 C
 CJK Unified Ideographs Extension D: 中日韩统一表意文字扩充 D
 CJK Unified Ideographs Extension E: 中日韩统一表意文字扩充 E
 CJK Unified Ideographs Extension F: 中日韩统一表意文字扩充 F
+CJK Unified Ideographs Extension I: 中日韩统一表意文字扩充 I
 CJK Compatibility Ideographs Supplement: 中日韩兼容表意文字增补
 CJK Unified Ideographs Extension G: 中日韩统一表意文字扩充 G
 CJK Unified Ideographs Extension H: 中日韩统一表意文字扩充 H
