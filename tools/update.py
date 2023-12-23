@@ -31,18 +31,18 @@ def main():
 
     languages = ['en']
 
-    for lang_file_name in os.listdir(translations_dir):
-        if not lang_file_name.endswith('.txt'):
+    for translation_file_name in os.listdir(translations_dir):
+        if not translation_file_name.endswith('.txt'):
             continue
-        language = langcodes.standardize_tag(lang_file_name.removesuffix('.txt'))
+        language = langcodes.standardize_tag(translation_file_name.removesuffix('.txt'))
         languages.append(language)
 
-        lang_file_path = os.path.join(translations_dir, lang_file_name)
-        with open(lang_file_path, 'r', encoding='utf-8') as file:
+        translation_file_path = os.path.join(translations_dir, translation_file_name)
+        with open(translation_file_path, 'r', encoding='utf-8') as file:
             translation = unidata_blocks._parse_translation(file.read())
 
-        lang_tmp_file_path = os.path.join(translations_tmp_dir, lang_file_name)
-        with open(lang_tmp_file_path, 'w', encoding='utf-8') as file:
+        translation_tmp_file_path = os.path.join(translations_tmp_dir, translation_file_name)
+        with open(translation_tmp_file_path, 'w', encoding='utf-8') as file:
             file.write(f'# Unicode: {unicode_version}\n')
             file.write(f'# {language}\n\n')
             for block in blocks:
