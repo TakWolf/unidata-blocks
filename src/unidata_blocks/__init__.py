@@ -36,8 +36,8 @@ def _parse_lang_codes(text: str) -> list[str]:
     return lang_codes
 
 
-def _parse_translations(text: str) -> dict[str, str]:
-    translations = {}
+def _parse_translation(text: str) -> dict[str, str]:
+    translation = {}
     lines = re.split(r'\r\n|\r|\n', text)
     for line in lines:
         line = line.strip()
@@ -45,13 +45,13 @@ def _parse_translations(text: str) -> dict[str, str]:
             continue
         tokens = line.split(':')
         if len(tokens) == 2:
-            translations[tokens[0].strip()] = tokens[1].strip()
-    return translations
+            translation[tokens[0].strip()] = tokens[1].strip()
+    return translation
 
 
 class UnicodeBlock:
     _supported_languages: Final[list[str]] = _parse_lang_codes(_load_data_text('unidata/lang-codes.txt'))
-    _translations_registry: Final[dict[str, dict[str, str]]] = {}
+    _translation_registry: Final[dict[str, dict[str, str]]] = {}
 
     def __init__(self, code_start: int, code_end: int, name: str):
         self.code_start = code_start
@@ -73,12 +73,12 @@ class UnicodeBlock:
             return __default
         if closest_language == 'en':
             return self.name
-        if closest_language in UnicodeBlock._translations_registry:
-            translations = UnicodeBlock._translations_registry[closest_language]
+        if closest_language in UnicodeBlock._translation_registry:
+            translation = UnicodeBlock._translation_registry[closest_language]
         else:
-            translations = _parse_translations(_load_data_text(f'unidata/translations/{closest_language}.txt'))
-            UnicodeBlock._translations_registry[closest_language] = translations
-        return translations.get(self.name, __default)
+            translation = _parse_translation(_load_data_text(f'unidata/translations/{closest_language}.txt'))
+            UnicodeBlock._translation_registry[closest_language] = translation
+        return translation.get(self.name, __default)
 
 
 def _standardize_block_name(name: str) -> str:

@@ -39,14 +39,14 @@ def main():
 
         lang_file_path = os.path.join(translations_dir, lang_file_name)
         with open(lang_file_path, 'r', encoding='utf-8') as file:
-            translations = unidata_blocks._parse_translations(file.read())
+            translation = unidata_blocks._parse_translation(file.read())
 
         lang_tmp_file_path = os.path.join(translations_tmp_dir, lang_file_name)
         with open(lang_tmp_file_path, 'w', encoding='utf-8') as file:
             file.write(f'# Unicode: {unicode_version}\n')
             file.write(f'# {lang_code}\n\n')
             for block in blocks:
-                localized_name = translations.get(block.name, None)
+                localized_name = translation.get(block.name, None)
                 if localized_name is None:
                     file.write(f'# TODO # {block.name}:\n')
                 else:
