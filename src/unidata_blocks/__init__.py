@@ -25,15 +25,15 @@ def _parse_blocks(text: str) -> tuple[str, list['UnicodeBlock']]:
     return version, blocks
 
 
-def _parse_lang_codes(text: str) -> list[str]:
-    lang_codes = []
+def _parse_languages(text: str) -> list[str]:
+    languages = []
     lines = re.split(r'\r\n|\r|\n', text)
     for line in lines:
         line = line.strip()
         if line == '':
             continue
-        lang_codes.append(line)
-    return lang_codes
+        languages.append(line)
+    return languages
 
 
 def _parse_translation(text: str) -> dict[str, str]:
@@ -50,7 +50,7 @@ def _parse_translation(text: str) -> dict[str, str]:
 
 
 class UnicodeBlock:
-    _supported_languages: Final[list[str]] = _parse_lang_codes(_load_data_text('unidata/lang-codes.txt'))
+    _supported_languages: Final[list[str]] = _parse_languages(_load_data_text('unidata/languages.txt'))
     _translation_registry: Final[dict[str, dict[str, str]]] = {}
 
     def __init__(self, code_start: int, code_end: int, name: str):
@@ -67,8 +67,8 @@ class UnicodeBlock:
     def __str__(self):
         return f'{self.code_start:04X}..{self.code_end:04X}; {self.name}'
 
-    def name_localized(self, lang_code: str, __default: str = None) -> str | None:
-        closest_language = langcodes.closest_supported_match(lang_code, UnicodeBlock._supported_languages)
+    def name_localized(self, language: str, __default: str = None) -> str | None:
+        closest_language = langcodes.closest_supported_match(language, UnicodeBlock._supported_languages)
         if closest_language is None:
             return __default
         if closest_language == 'en':

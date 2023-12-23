@@ -14,7 +14,7 @@ blocks_file_name = 'Blocks.txt'
 blocks_file_path = os.path.join(unidata_dir, blocks_file_name)
 translations_dir = os.path.join(unidata_dir, 'translations')
 translations_tmp_dir = os.path.join(project_root_dir, 'build', 'translations')
-lang_codes_file_path = os.path.join(unidata_dir, 'lang-codes.txt')
+languages_file_path = os.path.join(unidata_dir, 'languages.txt')
 
 
 def main():
@@ -29,13 +29,13 @@ def main():
         shutil.rmtree(translations_tmp_dir)
     os.makedirs(translations_tmp_dir)
 
-    lang_codes = ['en']
+    languages = ['en']
 
     for lang_file_name in os.listdir(translations_dir):
         if not lang_file_name.endswith('.txt'):
             continue
-        lang_code = langcodes.standardize_tag(lang_file_name.removesuffix('.txt'))
-        lang_codes.append(lang_code)
+        language = langcodes.standardize_tag(lang_file_name.removesuffix('.txt'))
+        languages.append(language)
 
         lang_file_path = os.path.join(translations_dir, lang_file_name)
         with open(lang_file_path, 'r', encoding='utf-8') as file:
@@ -44,7 +44,7 @@ def main():
         lang_tmp_file_path = os.path.join(translations_tmp_dir, lang_file_name)
         with open(lang_tmp_file_path, 'w', encoding='utf-8') as file:
             file.write(f'# Unicode: {unicode_version}\n')
-            file.write(f'# {lang_code}\n\n')
+            file.write(f'# {language}\n\n')
             for block in blocks:
                 localized_name = translation.get(block.name, None)
                 if localized_name is None:
@@ -54,9 +54,9 @@ def main():
     shutil.rmtree(translations_dir)
     os.rename(translations_tmp_dir, translations_dir)
 
-    lang_codes.sort()
-    with open(lang_codes_file_path, 'w', encoding='utf-8') as file:
-        file.write('\n'.join(lang_codes))
+    languages.sort()
+    with open(languages_file_path, 'w', encoding='utf-8') as file:
+        file.write('\n'.join(languages))
         file.write('\n')
 
 
