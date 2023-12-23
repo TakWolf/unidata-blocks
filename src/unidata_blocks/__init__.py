@@ -14,8 +14,8 @@ def _parse_blocks(text: str) -> tuple[str, list['UnicodeBlock']]:
     lines = re.split(r'\r\n|\r|\n', text)
     version = lines[0].removeprefix('# Blocks-').removesuffix('.txt')
     for line in lines:
-        line = line.split('#', 1)[0].strip()
-        if line == '':
+        line = line.strip()
+        if line == '' or line.startswith('#'):
             continue
         tokens = re.split(r'\.\.|;\s', line)
         code_start = int(tokens[0], 16)
@@ -40,8 +40,8 @@ def _parse_translations(text: str) -> dict[str, str]:
     translations = {}
     lines = re.split(r'\r\n|\r|\n', text)
     for line in lines:
-        line = line.split('#', 1)[0].strip()
-        if line == '':
+        line = line.strip()
+        if line == '' or line.startswith('#'):
             continue
         tokens = line.split(':')
         if len(tokens) == 2:
