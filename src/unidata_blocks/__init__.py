@@ -76,7 +76,7 @@ class UnicodeBlock:
         if closest_language in UnicodeBlock._translations_registry:
             translations = UnicodeBlock._translations_registry[closest_language]
         else:
-            translations = _parse_translations(_load_data_text(f'unidata/translations/{closest_language.lower()}.txt'))
+            translations = _parse_translations(_load_data_text(f'unidata/translations/{closest_language}.txt'))
             UnicodeBlock._translations_registry[closest_language] = translations
         return translations.get(self.name, __default)
 

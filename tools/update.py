@@ -35,7 +35,6 @@ def main():
         if not lang_file_name.endswith('.txt'):
             continue
         lang_code = langcodes.standardize_tag(lang_file_name.removesuffix('.txt'))
-        assert f'{lang_code.lower()}.txt' == lang_file_name, f"Illegal file name: '{lang_file_name}'"
         lang_codes.append(lang_code)
 
         lang_file_path = os.path.join(translations_dir, lang_file_name)
