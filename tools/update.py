@@ -13,7 +13,7 @@ unidata_dir = os.path.join(project_root_dir, 'src', 'unidata_blocks', 'unidata')
 blocks_file_name = 'Blocks.txt'
 blocks_file_path = os.path.join(unidata_dir, blocks_file_name)
 translations_dir = os.path.join(unidata_dir, 'translations')
-translations_tmp_dir = os.path.join(project_root_dir, 'build', 'tmp', 'translations')
+translations_tmp_dir = os.path.join(project_root_dir, 'build', 'translations')
 lang_codes_file_path = os.path.join(unidata_dir, 'lang-codes.txt')
 
 
