@@ -1,4 +1,4 @@
 langcodes==3.3.0
 
-pytest==7.4.3
+pytest==7.4.4
 requests==2.31.0
