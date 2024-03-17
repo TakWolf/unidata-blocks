@@ -11,7 +11,7 @@ def _load_data_text(resource: str) -> str:
 
 def _parse_blocks(text: str) -> tuple[str, list['UnicodeBlock']]:
     blocks = []
-    lines = re.split(r'\r\n|\r|\n', text)
+    lines = text.splitlines()
     version = lines[0].removeprefix('# Blocks-').removesuffix('.txt')
     for line in lines:
         line = line.strip()
@@ -27,7 +27,7 @@ def _parse_blocks(text: str) -> tuple[str, list['UnicodeBlock']]:
 
 def _parse_languages(text: str) -> list[str]:
     languages = []
-    lines = re.split(r'\r\n|\r|\n', text)
+    lines = text.splitlines()
     for line in lines:
         line = line.strip()
         if line == '':
@@ -38,7 +38,7 @@ def _parse_languages(text: str) -> list[str]:
 
 def _parse_translation(text: str) -> dict[str, str]:
     translation = {}
-    lines = re.split(r'\r\n|\r|\n', text)
+    lines = text.splitlines()
     for line in lines:
         line = line.strip()
         if line == '' or line.startswith('#'):
