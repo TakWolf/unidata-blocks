@@ -81,12 +81,16 @@ class UnicodeBlock:
         return translation.get(self.name, __default)
 
 
-def _standardize_block_name(name: str) -> str:
-    return name.strip().lower().replace('-', ' ').replace('_', ' ')
+def _normalize_block_name(name: str) -> str:
+    name = name.lower()
+    name = name.replace('-', ' ')
+    name = name.replace('_', ' ')
+    name = name.strip()
+    return name
 
 
 unicode_version, _blocks = _parse_blocks(_load_data_text('unidata/Blocks.txt'))
-_name_to_block = {_standardize_block_name(block.name): block for block in _blocks}
+_name_to_block = {_normalize_block_name(block.name): block for block in _blocks}
 
 
 def get_block_by_code_point(code_point: int) -> UnicodeBlock | None:
@@ -98,7 +102,7 @@ def get_block_by_code_point(code_point: int) -> UnicodeBlock | None:
 
 
 def get_block_by_name(name: str) -> UnicodeBlock | None:
-    return _name_to_block.get(_standardize_block_name(name), None)
+    return _name_to_block.get(_normalize_block_name(name), None)
 
 
 def get_block_by_chr(c: str) -> UnicodeBlock | None:
