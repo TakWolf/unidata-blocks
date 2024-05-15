@@ -10,17 +10,14 @@ blocks_doc_url = 'https://www.unicode.org/Public/UNIDATA/Blocks.txt'
 
 project_root_dir = Path(__file__).parent.joinpath('..').resolve()
 unidata_dir = project_root_dir.joinpath('src', 'unidata_blocks', 'unidata')
-blocks_file_path = unidata_dir.joinpath('Blocks.txt')
 translations_dir = unidata_dir.joinpath('translations')
 translations_tmp_dir = project_root_dir.joinpath('build', 'translations')
-languages_file_path = unidata_dir.joinpath('languages.txt')
 
 
 def main():
     response = requests.get(blocks_doc_url)
-    assert response.ok
-    assert 'text/plain' in response.headers['Content-Type']
-    with open(blocks_file_path, 'w', encoding='utf-8') as file:
+    assert response.ok and 'text/plain' in response.headers['Content-Type']
+    with open(unidata_dir.joinpath('Blocks.txt'), 'w', encoding='utf-8') as file:
         file.write(response.text)
     # noinspection PyProtectedMember
     unicode_version, blocks = unidata_blocks._parse_blocks(response.text)
@@ -56,7 +53,7 @@ def main():
     translations_tmp_dir.rename(translations_dir)
 
     languages.sort()
-    with open(languages_file_path, 'w', encoding='utf-8') as file:
+    with open(unidata_dir.joinpath('languages.txt'), 'w', encoding='utf-8') as file:
         file.write('\n'.join(languages))
         file.write('\n')
 
