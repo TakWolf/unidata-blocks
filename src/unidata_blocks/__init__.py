@@ -1,6 +1,5 @@
 import pkgutil
 import re
-from typing import Final
 
 import langcodes
 
@@ -49,10 +48,11 @@ def _parse_translation(text: str) -> dict[str, str]:
     return translation
 
 
-class UnicodeBlock:
-    _supported_languages: Final[list[str]] = _parse_languages(_load_data_text('unidata/languages.txt'))
-    _translation_registry: Final[dict[str, dict[str, str]]] = {}
+_supported_languages = _parse_languages(_load_data_text('unidata/languages.txt'))
+_translations = {}
 
+
+class UnicodeBlock:
     def __init__(self, code_start: int, code_end: int, name: str):
         self.code_start = code_start
         self.code_end = code_end
@@ -68,16 +68,16 @@ class UnicodeBlock:
         return f'{self.code_start:04X}..{self.code_end:04X}; {self.name}'
 
     def name_localized(self, language: str, __default: str = None) -> str | None:
-        closest_language = langcodes.closest_supported_match(language, UnicodeBlock._supported_languages)
+        closest_language = langcodes.closest_supported_match(language, _supported_languages)
         if closest_language is None:
             return __default
         if closest_language == 'en':
             return self.name
-        if closest_language in UnicodeBlock._translation_registry:
-            translation = UnicodeBlock._translation_registry[closest_language]
+        if closest_language in _translations:
+            translation = _translations[closest_language]
         else:
             translation = _parse_translation(_load_data_text(f'unidata/translations/{closest_language}.txt'))
-            UnicodeBlock._translation_registry[closest_language] = translation
+            _translations[closest_language] = translation
         return translation.get(self.name, __default)
 
 
