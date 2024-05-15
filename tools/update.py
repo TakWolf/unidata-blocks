@@ -31,8 +31,7 @@ def main():
     for file_path in translations_dir.iterdir():
         if file_path.suffix != '.txt':
             continue
-        file_name = file_path.name
-        language = langcodes.standardize_tag(file_name.removesuffix('.txt'))
+        language = langcodes.standardize_tag(file_path.name.removesuffix('.txt'))
         languages.append(language)
 
         # noinspection PyProtectedMember
@@ -47,7 +46,7 @@ def main():
                 output.write(f'# TODO # {block.name}:\n')
             else:
                 output.write(f'{block.name}: {localized_name}\n')
-        translations_tmp_dir.joinpath(file_name).write_text(output.getvalue(), 'utf-8')
+        translations_tmp_dir.joinpath(f'{language}.txt').write_text(output.getvalue(), 'utf-8')
     shutil.rmtree(translations_dir)
     translations_tmp_dir.rename(translations_dir)
 
