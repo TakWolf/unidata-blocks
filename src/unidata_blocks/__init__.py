@@ -51,6 +51,12 @@ _translations = {}
 
 
 class UnicodeBlock:
+    code_start: int
+    code_end: int
+    name: str
+    capacity: int
+    printable_count: int
+
     def __init__(self, code_start: int, code_end: int, name: str):
         self.code_start = code_start
         self.code_end = code_end
