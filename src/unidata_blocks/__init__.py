@@ -1,11 +1,10 @@
-import pkgutil
 import re
 
+import importlib_resources
 import langcodes
 
-
-def _load_data_text(resource: str) -> str:
-    return pkgutil.get_data(__package__, resource).decode(encoding='utf-8')
+_unidata_dir = importlib_resources.files().joinpath('unidata')
+_translations_dir = _unidata_dir.joinpath('translations')
 
 
 def _parse_blocks(text: str) -> tuple[str, list['UnicodeBlock']]:
@@ -48,7 +47,7 @@ def _parse_translation(text: str) -> dict[str, str]:
     return translation
 
 
-_supported_languages = _parse_languages(_load_data_text('unidata/languages.txt'))
+_supported_languages = _parse_languages(_unidata_dir.joinpath('languages.txt').read_text('utf-8'))
 _translations = {}
 
 
@@ -76,7 +75,7 @@ class UnicodeBlock:
         if closest_language in _translations:
             translation = _translations[closest_language]
         else:
-            translation = _parse_translation(_load_data_text(f'unidata/translations/{closest_language}.txt'))
+            translation = _parse_translation(_translations_dir.joinpath(f'{closest_language}.txt').read_text('utf-8'))
             _translations[closest_language] = translation
         return translation.get(self.name, __default)
 
@@ -89,7 +88,7 @@ def _normalize_block_name(name: str) -> str:
     return name
 
 
-unicode_version, _blocks = _parse_blocks(_load_data_text('unidata/Blocks.txt'))
+unicode_version, _blocks = _parse_blocks(_unidata_dir.joinpath('Blocks.txt').read_text('utf-8'))
 _name_to_block = {_normalize_block_name(block.name): block for block in _blocks}
 
 

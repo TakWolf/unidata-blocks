@@ -23,6 +23,7 @@ classifiers = [
 ]
 
 dependencies = [
+    "importlib_resources>=6.4.0",
     "langcodes>=3.4.0",
 ]
 
