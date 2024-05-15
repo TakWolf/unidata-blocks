@@ -1,4 +1,5 @@
 import shutil
+from io import StringIO
 from pathlib import Path
 
 import langcodes
@@ -17,8 +18,7 @@ translations_tmp_dir = project_root_dir.joinpath('build', 'translations')
 def main():
     response = requests.get(blocks_doc_url)
     assert response.ok and 'text/plain' in response.headers['Content-Type']
-    with open(unidata_dir.joinpath('Blocks.txt'), 'w', encoding='utf-8') as file:
-        file.write(response.text)
+    unidata_dir.joinpath('Blocks.txt').write_text(response.text, 'utf-8')
     # noinspection PyProtectedMember
     unicode_version, blocks = unidata_blocks._parse_blocks(response.text)
 
@@ -35,27 +35,24 @@ def main():
         language = langcodes.standardize_tag(file_name.removesuffix('.txt'))
         languages.append(language)
 
-        with open(file_path, 'r', encoding='utf-8') as file:
-            # noinspection PyProtectedMember
-            translation = unidata_blocks._parse_translation(file.read())
+        # noinspection PyProtectedMember
+        translation = unidata_blocks._parse_translation(file_path.read_text('utf-8'))
 
-        tmp_file_path = translations_tmp_dir.joinpath(file_name)
-        with open(tmp_file_path, 'w', encoding='utf-8') as file:
-            file.write(f'# Unicode: {unicode_version}\n')
-            file.write(f'# {language}\n\n')
-            for block in blocks:
-                localized_name = translation.get(block.name, None)
-                if localized_name is None:
-                    file.write(f'# TODO # {block.name}:\n')
-                else:
-                    file.write(f'{block.name}: {localized_name}\n')
+        output = StringIO()
+        output.write(f'# Unicode: {unicode_version}\n')
+        output.write(f'# {language}\n\n')
+        for block in blocks:
+            localized_name = translation.get(block.name, None)
+            if localized_name is None:
+                output.write(f'# TODO # {block.name}:\n')
+            else:
+                output.write(f'{block.name}: {localized_name}\n')
+        translations_tmp_dir.joinpath(file_name).write_text(output.getvalue(), 'utf-8')
     shutil.rmtree(translations_dir)
     translations_tmp_dir.rename(translations_dir)
 
     languages.sort()
-    with open(unidata_dir.joinpath('languages.txt'), 'w', encoding='utf-8') as file:
-        file.write('\n'.join(languages))
-        file.write('\n')
+    unidata_dir.joinpath('languages.txt').write_text(f'{'\n'.join(languages)}\n', 'utf-8')
 
 
 if __name__ == '__main__':
