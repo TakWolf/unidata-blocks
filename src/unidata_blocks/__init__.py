@@ -23,17 +23,6 @@ def _parse_blocks(text: str) -> tuple[str, list['UnicodeBlock']]:
     return version, blocks
 
 
-def _parse_languages(text: str) -> list[str]:
-    languages = []
-    lines = text.splitlines()
-    for line in lines:
-        line = line.strip()
-        if line == '':
-            continue
-        languages.append(line)
-    return languages
-
-
 def _parse_translation(text: str) -> dict[str, str]:
     translation = {}
     lines = text.splitlines()
@@ -47,7 +36,17 @@ def _parse_translation(text: str) -> dict[str, str]:
     return translation
 
 
-_supported_languages = _parse_languages(_unidata_dir.joinpath('languages.txt').read_text('utf-8'))
+def _get_supported_languages() -> list[str]:
+    languages = ['en']
+    for file_path in _translations_dir.iterdir():
+        if file_path.suffix != '.txt':
+            continue
+        language = file_path.name.removesuffix('.txt')
+        languages.append(language)
+    return languages
+
+
+_supported_languages = _get_supported_languages()
 _translations = {}
 
 

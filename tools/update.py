@@ -26,14 +26,10 @@ def main():
         shutil.rmtree(translations_tmp_dir)
     translations_tmp_dir.mkdir(parents=True)
 
-    languages = ['en']
-
     for file_path in translations_dir.iterdir():
         if file_path.suffix != '.txt':
             continue
         language = langcodes.standardize_tag(file_path.name.removesuffix('.txt'))
-        languages.append(language)
-
         # noinspection PyProtectedMember
         translation = unidata_blocks._parse_translation(file_path.read_text('utf-8'))
 
@@ -47,11 +43,9 @@ def main():
             else:
                 output.write(f'{block.name}: {localized_name}\n')
         translations_tmp_dir.joinpath(f'{language}.txt').write_text(output.getvalue(), 'utf-8')
+
     shutil.rmtree(translations_dir)
     translations_tmp_dir.rename(translations_dir)
-
-    languages.sort()
-    unidata_dir.joinpath('languages.txt').write_text(f'{'\n'.join(languages)}\n', 'utf-8')
 
 
 if __name__ == '__main__':
