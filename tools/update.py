@@ -1,5 +1,4 @@
 import shutil
-from io import StringIO
 from pathlib import Path
 
 import langcodes
@@ -33,16 +32,15 @@ def main():
         # noinspection PyProtectedMember
         translation = unidata_blocks._parse_translation(file_path.read_text('utf-8'))
 
-        output = StringIO()
-        output.write(f'# Unicode: {unicode_version}\n')
-        output.write(f'# {language}\n\n')
-        for block in blocks:
-            localized_name = translation.get(block.name, None)
-            if localized_name is None:
-                output.write(f'# TODO # {block.name}:\n')
-            else:
-                output.write(f'{block.name}: {localized_name}\n')
-        translations_tmp_dir.joinpath(f'{language}.txt').write_text(output.getvalue(), 'utf-8')
+        with translations_tmp_dir.joinpath(f'{language}.txt').open('w', encoding='utf-8') as file:
+            file.write(f'# Unicode: {unicode_version}\n')
+            file.write(f'# {language}\n\n')
+            for block in blocks:
+                localized_name = translation.get(block.name, None)
+                if localized_name is None:
+                    file.write(f'# TODO # {block.name}:\n')
+                else:
+                    file.write(f'{block.name}: {localized_name}\n')
 
     shutil.rmtree(translations_dir)
     translations_tmp_dir.rename(translations_dir)
