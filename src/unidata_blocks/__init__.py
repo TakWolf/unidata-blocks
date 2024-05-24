@@ -68,7 +68,7 @@ class UnicodeBlock:
             if c.isprintable():
                 self.printable_count += 1
 
-    def __str__(self):
+    def __repr__(self) -> str:
         return f'{self.code_start:04X}..{self.code_end:04X}; {self.name}'
 
     def name_localized(self, language: str, __default: str = None) -> str | None:
