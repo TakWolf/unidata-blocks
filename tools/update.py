@@ -29,7 +29,7 @@ def main():
     for file_path in translations_dir.iterdir():
         if file_path.suffix != '.txt':
             continue
-        language = langcodes.standardize_tag(file_path.name.removesuffix('.txt'))
+        language = langcodes.standardize_tag(file_path.stem)
         # noinspection PyProtectedMember
         translation = unidata_blocks._parse_translation(file_path.read_text('utf-8'))
 
