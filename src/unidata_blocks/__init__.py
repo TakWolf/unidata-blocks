@@ -39,10 +39,9 @@ def _parse_translation(text: str) -> dict[str, str]:
 def _get_supported_languages() -> list[str]:
     languages = ['en']
     for file_path in _translations_dir.iterdir():
-        if file_path.suffix != '.txt':
-            continue
-        language = file_path.name.removesuffix('.txt')
-        languages.append(language)
+        if file_path.name.endswith('.txt'):
+            language = file_path.name.removesuffix('.txt')
+            languages.append(language)
     return languages
 
 
