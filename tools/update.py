@@ -1,8 +1,8 @@
 import shutil
 from pathlib import Path
 
+import httpx
 import langcodes
-import requests
 
 import unidata_blocks
 
@@ -15,8 +15,8 @@ translations_tmp_dir = project_root_dir.joinpath('build', 'translations')
 
 
 def main():
-    response = requests.get(blocks_doc_url)
-    assert response.ok and 'text/plain' in response.headers['Content-Type']
+    response = httpx.get(blocks_doc_url)
+    assert response.is_success and 'text/plain' in response.headers['Content-Type']
     unidata_dir.joinpath('Blocks.txt').write_text(response.text, 'utf-8')
     # noinspection PyProtectedMember
     unicode_version, blocks = unidata_blocks._parse_blocks(response.text)
