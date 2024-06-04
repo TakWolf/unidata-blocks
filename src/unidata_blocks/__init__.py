@@ -70,7 +70,7 @@ class UnicodeBlock:
     def __repr__(self) -> str:
         return f'{self.code_start:04X}..{self.code_end:04X}; {self.name}'
 
-    def name_localized(self, language: str, __default: str = None) -> str | None:
+    def name_localized(self, language: str, __default: str | None = None) -> str | None:
         closest_language = langcodes.closest_supported_match(language, _supported_languages)
         if closest_language is None:
             return __default
