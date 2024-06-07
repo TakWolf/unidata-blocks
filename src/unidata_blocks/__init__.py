@@ -1,9 +1,9 @@
 import re
+from importlib import resources
 
-import importlib_resources
 import langcodes
 
-_unidata_dir = importlib_resources.files().joinpath('unidata')
+_unidata_dir = resources.files(__package__).joinpath('unidata')
 _translations_dir = _unidata_dir.joinpath('translations')
 
 

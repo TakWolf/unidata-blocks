@@ -24,7 +24,6 @@ assert block.name == 'Basic Latin'
 
 ## Dependencies
 
-- [importlib_resources](https://github.com/python/importlib_resources)
 - [Langcodes](https://github.com/rspeer/langcodes)
 
 ## License
