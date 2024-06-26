@@ -1,21 +1,18 @@
 import shutil
-from pathlib import Path
 
 import httpx
 import langcodes
 
 import unidata_blocks
-
-blocks_doc_url = 'https://www.unicode.org/Public/UNIDATA/Blocks.txt'
-
-project_root_dir = Path(__file__).parent.joinpath('..').resolve()
-unidata_dir = project_root_dir.joinpath('src', 'unidata_blocks', 'unidata')
-translations_dir = unidata_dir.joinpath('translations')
-translations_tmp_dir = project_root_dir.joinpath('build', 'translations')
+from tools import project_root_dir
 
 
 def main():
-    response = httpx.get(blocks_doc_url)
+    unidata_dir = project_root_dir.joinpath('src', 'unidata_blocks', 'unidata')
+    translations_dir = unidata_dir.joinpath('translations')
+    translations_tmp_dir = project_root_dir.joinpath('build', 'translations')
+
+    response = httpx.get('https://www.unicode.org/Public/UNIDATA/Blocks.txt')
     assert response.is_success and 'text/plain' in response.headers['Content-Type']
     unidata_dir.joinpath('Blocks.txt').write_text(response.text, 'utf-8')
     # noinspection PyProtectedMember
