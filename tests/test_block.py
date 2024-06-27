@@ -71,6 +71,16 @@ def test_to_str():
     assert str(block) == '100000..10FFFF; Supplementary Private Use Area-B'
 
 
+def test_contains():
+    block = unidata_blocks.get_block_by_code_point(0x4E00)
+    assert 0x4E00 in block
+    assert 0x9FFF in block
+    assert 0x5000 in block
+    assert 0x1000 not in block
+    assert 0xFFFF not in block
+    assert '0x5000' not in block
+
+
 def test_i18n():
     block = unidata_blocks.get_block_by_code_point(0x0000)
     assert block.name_localized('en') == 'Basic Latin'

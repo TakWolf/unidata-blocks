@@ -1,5 +1,6 @@
 import re
 from importlib import resources
+from typing import Any
 
 import langcodes
 
@@ -69,6 +70,11 @@ class UnicodeBlock:
 
     def __repr__(self) -> str:
         return f'{self.code_start:04X}..{self.code_end:04X}; {self.name}'
+
+    def __contains__(self, item: Any) -> bool:
+        if not isinstance(item, int):
+            return False
+        return self.code_start <= item <= self.code_end
 
     def name_localized(self, language: str, __default: str | None = None) -> str | None:
         closest_language = langcodes.closest_supported_match(language, _supported_languages)
