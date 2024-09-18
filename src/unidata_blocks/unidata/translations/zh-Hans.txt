@@ -1,4 +1,4 @@
-# Unicode: 15.1.0
+# Unicode: 16.0.0
 # zh-Hans
 
 Basic Latin: 基本拉丁
@@ -186,6 +186,7 @@ Osage: 奥色治
 Elbasan: 爱尔巴桑
 Caucasian Albanian: 高加索阿尔巴尼亚
 Vithkuqi: 维斯库奇
+Todhri: 托德里
 Linear A: 线形 A
 Latin Extended-F: 拉丁扩充-F
 Cypriot Syllabary: 塞浦路斯音节文字
@@ -208,6 +209,7 @@ Psalter Pahlavi: 诗篇体巴列维
 Old Turkic: 突厥
 Old Hungarian: 古匈牙利
 Hanifi Rohingya: 哈尼菲罗兴亚
+Garay: 加拉伊
 Rumi Numeral Symbols: 鲁米数字符号
 Yezidi: 耶西迪
 Arabic Extended-C: 阿拉伯扩充-C
@@ -227,12 +229,14 @@ Khojki: 科杰基
 Multani: 木尔坦
 Khudawadi: 库达本德
 Grantha: 格兰他
+Tulu-Tigalari: 图鲁蒂加拉里
 Newa: 内瓦
 Tirhuta: 蒂勒胡塔
 Siddham: 悉昙
 Modi: 莫迪
 Mongolian Supplement: 蒙文增补
 Takri: 塔克里
+Myanmar Extended-C: 缅甸扩充-C
 Ahom: 阿含
 Dogra: 道格拉
 Warang Citi: 瓦朗奇蒂
@@ -243,6 +247,7 @@ Soyombo: 索永布
 Unified Canadian Aboriginal Syllabics Extended-A: 统一加拿大原住民音节文字扩充-A
 Pau Cin Hau: 包钦豪
 Devanagari Extended-A: 天城体扩充-A
+Sunuwar: 苏努瓦尔
 Bhaiksuki: 比克舒基
 Marchen: 玛尔钦体
 Masaram Gondi: 马萨拉姆贡德
@@ -257,12 +262,15 @@ Early Dynastic Cuneiform: 早王朝楔形文字
 Cypro-Minoan: 塞浦路斯-米诺斯
 Egyptian Hieroglyphs: 埃及圣书体
 Egyptian Hieroglyph Format Controls: 埃及圣书体格式控制符
+Egyptian Hieroglyphs Extended-A: 埃及圣书体扩充-A
 Anatolian Hieroglyphs: 安纳托利亚圣书体
+Gurung Khema: 古隆凯玛
 Bamum Supplement: 巴默姆增补
 Mro: 姆鲁
 Tangsa: 通萨
 Bassa Vah: 巴索奥瓦
 Pahawh Hmong: 帕皓苗
+Kirat Rai: 基拉特莱
 Medefaidrin: 梅代法伊德林
 Miao: 苗文
 Ideographic Symbols and Punctuation: 表意文字符号与标点
@@ -277,6 +285,7 @@ Small Kana Extension: 小型假名扩充
 Nushu: 女书
 Duployan: 迪普卢瓦耶
 Shorthand Format Controls: 速记格式控制符
+Symbols for Legacy Computing Supplement: 遗留计算机符号增补
 Znamenny Musical Notation: 兹纳缅内音乐符号
 Byzantine Musical Symbols: 拜占庭音乐符号
 Musical Symbols: 音乐符号
@@ -294,6 +303,7 @@ Nyiakeng Puachue Hmong: 涅该布瓦启苗
 Toto: 托托
 Wancho: 万乔
 Nag Mundari: 纳格蒙达里
+Ol Onal: 奥尔奥纳尔
 Ethiopic Extended-B: 埃塞俄比亚扩充-B
 Mende Kikakui: 门迪基卡奎
 Adlam: 阿德拉姆
@@ -315,7 +325,7 @@ Supplemental Arrows-C: 增补箭头-C
 Supplemental Symbols and Pictographs: 增补符号与图形
 Chess Symbols: 棋符号
 Symbols and Pictographs Extended-A: 符号与图形扩充-A
-Symbols for Legacy Computing: 传统计算机符号
+Symbols for Legacy Computing: 遗留计算机符号
 CJK Unified Ideographs Extension B: 中日韩统一表意文字扩充 B
 CJK Unified Ideographs Extension C: 中日韩统一表意文字扩充 C
 CJK Unified Ideographs Extension D: 中日韩统一表意文字扩充 D
