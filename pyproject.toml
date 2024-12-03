@@ -23,7 +23,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "langcodes>=3.4.0",
+    "langcodes>=3.5.0",
 ]
 
 [project.urls]
