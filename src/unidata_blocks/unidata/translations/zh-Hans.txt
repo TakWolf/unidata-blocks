@@ -77,7 +77,7 @@ General Punctuation: 通用标点
 Superscripts and Subscripts: 上标与下标
 Currency Symbols: 货币符号
 Combining Diacritical Marks for Symbols: 符号用结合变音记号
-Letterlike Symbols: 类字符号
+Letterlike Symbols: 字母式符号
 Number Forms: 数字形式
 Arrows: 箭头
 Mathematical Operators: 数学运算符
