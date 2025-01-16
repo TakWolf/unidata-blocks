@@ -64,8 +64,7 @@ class UnicodeBlock:
         self.capacity = code_end - code_start + 1
         self.printable_count = 0
         for code_point in range(code_start, code_end + 1):
-            c = chr(code_point)
-            if c.isprintable():
+            if chr(code_point).isprintable():
                 self.printable_count += 1
 
     def __repr__(self) -> str:
