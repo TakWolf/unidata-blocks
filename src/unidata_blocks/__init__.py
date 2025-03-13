@@ -75,6 +75,15 @@ class UnicodeBlock:
     def __repr__(self) -> str:
         return f'{self.code_start:04X}..{self.code_end:04X}; {self.name}'
 
+    def __eq__(self, other: Any) -> bool:
+        if not isinstance(other, UnicodeBlock):
+            return False
+        return (self.code_start == other.code_start and
+                self.code_end == other.code_end and
+                self.name == other.name and
+                self.capacity == other.capacity and
+                self.printable_count == other.printable_count)
+
     def name_localized(self, language: str, __default: str | None = None) -> str | None:
         closest_language = langcodes.closest_supported_match(language, _supported_languages)
         if closest_language is None:
