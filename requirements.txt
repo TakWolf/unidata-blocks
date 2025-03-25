@@ -1,4 +1,4 @@
 langcodes==3.5.0
 
-pytest==8.3.4
-httpx==0.28.1
+pytest==8.3.5
+httpx[http2]==0.28.1
