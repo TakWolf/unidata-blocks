@@ -28,4 +28,4 @@ assert block.name == 'Basic Latin'
 
 ## License
 
-Under the [MIT license](LICENSE).
+[MIT License](LICENSE)
