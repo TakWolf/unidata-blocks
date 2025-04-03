@@ -29,7 +29,7 @@ def main():
         # noinspection PyProtectedMember
         translation = unidata_blocks._parse_translation(file_path.read_text('utf-8'))
 
-        with translations_tmp_dir.joinpath(f'{language}.txt').open('w', encoding='utf-8') as file:
+        with translations_tmp_dir.joinpath(f'{language}.txt').open('w', encoding='utf-8', newline='\n') as file:
             file.write(f'# Unicode: {unicode_version}\n')
             file.write(f'# {language}\n\n')
             for block in blocks:
