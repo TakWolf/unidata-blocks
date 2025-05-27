@@ -79,7 +79,7 @@ class UnicodeBlock:
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, UnicodeBlock):
-            return False
+            return NotImplemented
         return (self.code_start == other.code_start and
                 self.code_end == other.code_end and
                 self.name == other.name and
