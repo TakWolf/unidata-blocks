@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "unidata-blocks"
-version = "0.0.16"
+version = "0.0.17"
 description = "A library that helps query Unicode blocks by Blocks.txt"
 readme = "README.md"
 license = { text = "MIT License" }
