@@ -100,6 +100,9 @@ class UnicodeBlock:
         return translation.get(self.name, __default)
 
 
+unicode_version, _blocks = _parse_blocks(_unidata_dir.joinpath('Blocks.txt').read_text('utf-8'))
+
+
 def _normalize_block_name(name: str) -> str:
     name = name.lower()
     name = name.replace('-', ' ')
@@ -108,24 +111,32 @@ def _normalize_block_name(name: str) -> str:
     return name
 
 
-unicode_version, _blocks = _parse_blocks(_unidata_dir.joinpath('Blocks.txt').read_text('utf-8'))
-_name_to_block = {_normalize_block_name(block.name): block for block in _blocks}
+def _build_block_mappings() -> tuple[dict[int, UnicodeBlock], dict[str, UnicodeBlock]]:
+    code_point_to_block = {}
+    name_to_block = {}
+
+    for block in _blocks:
+        for code_point in range(block.code_start, block.code_end + 1):
+            code_point_to_block[code_point] = block
+
+        name_to_block[_normalize_block_name(block.name)] = block
+
+    return code_point_to_block, name_to_block
+
+
+_code_point_to_block, _name_to_block = _build_block_mappings()
 
 
 def get_block_by_code_point(code_point: int) -> UnicodeBlock | None:
-    if _blocks[0].code_start <= code_point <= _blocks[-1].code_end:
-        for block in _blocks:
-            if block.code_start <= code_point <= block.code_end:
-                return block
-    return None
-
-
-def get_block_by_name(name: str) -> UnicodeBlock | None:
-    return _name_to_block.get(_normalize_block_name(name), None)
+    return _code_point_to_block.get(code_point, None)
 
 
 def get_block_by_chr(c: str) -> UnicodeBlock | None:
     return get_block_by_code_point(ord(c))
+
+
+def get_block_by_name(name: str) -> UnicodeBlock | None:
+    return _name_to_block.get(_normalize_block_name(name), None)
 
 
 def get_blocks() -> list[UnicodeBlock]:
