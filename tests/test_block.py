@@ -26,17 +26,6 @@ def test_code_point_query():
     assert block.printable_count == 94
 
 
-def test_name_query():
-    block = unidata_blocks.get_block_by_name('CJK Unified Ideographs')
-    assert block.code_start == 0x4E00
-    assert block.code_end == 0x9FFF
-    assert block.name == 'CJK Unified Ideographs'
-    assert block == unidata_blocks.get_block_by_name('CJK-Unified-Ideographs')
-    assert block == unidata_blocks.get_block_by_name('CJK_Unified_Ideographs')
-    assert block == unidata_blocks.get_block_by_name('cjk unified ideographs')
-    assert block == unidata_blocks.get_block_by_name('CJK UNIFIED IDEOGRAPHS')
-
-
 def test_chr_query():
     block = unidata_blocks.get_block_by_chr('A')
     assert block.code_start == 0x0000
@@ -49,6 +38,17 @@ def test_chr_query():
     assert block.code_end == 0x9FFF
     assert block.name == 'CJK Unified Ideographs'
     assert block == unidata_blocks.get_block_by_chr('字')
+
+
+def test_name_query():
+    block = unidata_blocks.get_block_by_name('CJK Unified Ideographs')
+    assert block.code_start == 0x4E00
+    assert block.code_end == 0x9FFF
+    assert block.name == 'CJK Unified Ideographs'
+    assert block == unidata_blocks.get_block_by_name('CJK-Unified-Ideographs')
+    assert block == unidata_blocks.get_block_by_name('CJK_Unified_Ideographs')
+    assert block == unidata_blocks.get_block_by_name('cjk unified ideographs')
+    assert block == unidata_blocks.get_block_by_name('CJK UNIFIED IDEOGRAPHS')
 
 
 def test_all_query():
