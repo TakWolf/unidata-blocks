@@ -86,10 +86,10 @@ class UnicodeBlock:
                 self.capacity == other.capacity and
                 self.printable_count == other.printable_count)
 
-    def name_localized(self, language: str, __default: str | None = None) -> str | None:
+    def name_localized(self, language: str, default: str | None = None) -> str | None:
         closest_language = langcodes.closest_supported_match(language, _supported_languages)
         if closest_language is None:
-            return __default
+            return default
         if closest_language == 'en':
             return self.name
         if closest_language in _translations:
@@ -97,7 +97,7 @@ class UnicodeBlock:
         else:
             translation = _parse_translation(_translations_dir.joinpath(f'{closest_language}.txt').read_text('utf-8'))
             _translations[closest_language] = translation
-        return translation.get(self.name, __default)
+        return translation.get(self.name, default)
 
 
 unicode_version, _blocks = _parse_blocks(_unidata_dir.joinpath('Blocks.txt').read_text('utf-8'))
