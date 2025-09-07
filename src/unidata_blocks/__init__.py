@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import re
 from importlib import resources
 from typing import Any
@@ -10,20 +8,16 @@ _unidata_dir = resources.files(__package__).joinpath('unidata')
 _translations_dir = _unidata_dir.joinpath('translations')
 
 
-def _parse_blocks(text: str) -> tuple[str, list[UnicodeBlock]]:
-    blocks = []
-    lines = text.splitlines()
-    version = lines[0].removeprefix('# Blocks-').removesuffix('.txt')
-    for line in lines:
-        line = line.strip()
-        if line == '' or line.startswith('#'):
-            continue
-        tokens = re.split(r'\.\.|;\s', line)
-        code_start = int(tokens[0], 16)
-        code_end = int(tokens[1], 16)
-        name = tokens[2]
-        blocks.append(UnicodeBlock(code_start, code_end, name))
-    return version, blocks
+def _get_supported_languages() -> list[str]:
+    languages = ['en']
+    for file_path in _translations_dir.iterdir():
+        if file_path.name.endswith('.txt'):
+            language = file_path.name.removesuffix('.txt')
+            languages.append(language)
+    return languages
+
+
+_supported_languages = _get_supported_languages()
 
 
 def _parse_translation(text: str) -> dict[str, str]:
@@ -39,16 +33,6 @@ def _parse_translation(text: str) -> dict[str, str]:
     return translation
 
 
-def _get_supported_languages() -> list[str]:
-    languages = ['en']
-    for file_path in _translations_dir.iterdir():
-        if file_path.name.endswith('.txt'):
-            language = file_path.name.removesuffix('.txt')
-            languages.append(language)
-    return languages
-
-
-_supported_languages = _get_supported_languages()
 _translations = {}
 
 
@@ -98,6 +82,22 @@ class UnicodeBlock:
             translation = _parse_translation(_translations_dir.joinpath(f'{closest_language}.txt').read_text('utf-8'))
             _translations[closest_language] = translation
         return translation.get(self.name, default)
+
+
+def _parse_blocks(text: str) -> tuple[str, list[UnicodeBlock]]:
+    blocks = []
+    lines = text.splitlines()
+    version = lines[0].removeprefix('# Blocks-').removesuffix('.txt')
+    for line in lines:
+        line = line.strip()
+        if line == '' or line.startswith('#'):
+            continue
+        tokens = re.split(r'\.\.|;\s', line)
+        code_start = int(tokens[0], 16)
+        code_end = int(tokens[1], 16)
+        name = tokens[2]
+        blocks.append(UnicodeBlock(code_start, code_end, name))
+    return version, blocks
 
 
 unicode_version, _blocks = _parse_blocks(_unidata_dir.joinpath('Blocks.txt').read_text('utf-8'))
