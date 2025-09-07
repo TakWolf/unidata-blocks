@@ -1,0 +1,349 @@
+# Unicode: 17.0.0
+# zh-Hant
+
+Basic Latin: 基本拉丁
+Latin-1 Supplement: 拉丁-1 補充
+Latin Extended-A: 拉丁擴充-A
+Latin Extended-B: 拉丁擴充-B
+IPA Extensions: 國際音標擴充
+Spacing Modifier Letters: 間距修飾字母
+Combining Diacritical Marks: 組合變音符號
+Greek and Coptic: 希臘與科普特
+Cyrillic: 西里爾
+Cyrillic Supplement: 西里爾補充
+Armenian: 亞美尼亞
+Hebrew: 希伯來
+Arabic: 阿拉伯
+Syriac: 敘利亞
+Arabic Supplement: 阿拉伯補充
+Thaana: 塔納
+NKo: 恩科
+Samaritan: 撒馬利亞
+Mandaic: 曼德恩
+Syriac Supplement: 敘利亞補充
+Arabic Extended-B: 阿拉伯擴充-B
+Arabic Extended-A: 阿拉伯擴充-A
+Devanagari: 天城文
+Bengali: 孟加拉
+Gurmukhi: 古魯穆奇
+Gujarati: 古吉拉特
+Oriya: 奧里亞
+Tamil: 泰米爾
+Telugu: 泰盧固
+Kannada: 卡納達
+Malayalam: 馬拉雅拉姆
+Sinhala: 僧伽羅
+Thai: 泰文
+Lao: 寮國
+Tibetan: 藏文
+Myanmar: 緬甸
+Georgian: 格魯吉亞
+Hangul Jamo: 諺文字母
+Ethiopic: 埃塞俄比亞
+Ethiopic Supplement: 埃塞俄比亞補充
+Cherokee: 切羅基
+Unified Canadian Aboriginal Syllabics: 統一加拿大原住民音節文字
+Ogham: 歐甘
+Runic: 盧恩
+Tagalog: 他加祿
+Hanunoo: 哈努努奧
+Buhid: 布希德
+Tagbanwa: 蒂亞格班瓦
+Khmer: 高棉
+Mongolian: 蒙古文
+Unified Canadian Aboriginal Syllabics Extended: 統一加拿大原住民音節文字擴充
+Limbu: 林布
+Tai Le: 傣㐻
+New Tai Lue: 新傣仂
+Khmer Symbols: 高棉符號
+Buginese: 布吉
+Tai Tham: 傣曇
+Combining Diacritical Marks Extended: 組合變音符號擴充
+Balinese: 巴厘
+Sundanese: 巽他
+Batak: 巴塔克
+Lepcha: 雷布查
+Ol Chiki: 奧爾奇基
+Cyrillic Extended-C: 西里爾擴充-C
+Georgian Extended: 格魯吉亞擴充
+Sundanese Supplement: 巽他補充
+Vedic Extensions: 吠陀擴充
+Phonetic Extensions: 音標擴充
+Phonetic Extensions Supplement: 音標擴充補充
+Combining Diacritical Marks Supplement: 組合變音符號補充
+Latin Extended Additional: 拉丁擴充附加
+Greek Extended: 希臘擴充
+General Punctuation: 通用標點
+Superscripts and Subscripts: 上標與下標
+Currency Symbols: 貨幣符號
+Combining Diacritical Marks for Symbols: 符號用組合變音符號
+Letterlike Symbols: 字母式符號
+Number Forms: 數字形式
+Arrows: 箭頭
+Mathematical Operators: 數學運算符
+Miscellaneous Technical: 各式技術符號
+Control Pictures: 控制圖符
+Optical Character Recognition: 光學字符識別
+Enclosed Alphanumerics: 包圍字母數字
+Box Drawing: 製表符
+Block Elements: 方塊元素
+Geometric Shapes: 幾何形狀
+Miscellaneous Symbols: 各式符號
+Dingbats: 雜錦
+Miscellaneous Mathematical Symbols-A: 各式數學符號-A
+Supplemental Arrows-A: 補充箭頭-A
+Braille Patterns: 盲文圖案
+Supplemental Arrows-B: 補充箭頭-B
+Miscellaneous Mathematical Symbols-B: 各式數學符號-B
+Supplemental Mathematical Operators: 補充數學運算符
+Miscellaneous Symbols and Arrows: 各式符號與箭頭
+Glagolitic: 格拉哥里
+Latin Extended-C: 拉丁擴充-C
+Coptic: 科普特
+Georgian Supplement: 格魯吉亞補充
+Tifinagh: 提非納
+Ethiopic Extended: 埃塞俄比亞擴充
+Cyrillic Extended-A: 西里爾擴充-A
+Supplemental Punctuation: 補充標點
+CJK Radicals Supplement: 中日韓部首補充
+Kangxi Radicals: 康熙部首
+Ideographic Description Characters: 表意文字描述字符
+CJK Symbols and Punctuation: 中日韓符號與標點
+Hiragana: 平假名
+Katakana: 片假名
+Bopomofo: 注音符號
+Hangul Compatibility Jamo: 諺文兼容字母
+Kanbun: 漢文
+Bopomofo Extended: 注音符號擴充
+CJK Strokes: 中日韓筆畫
+Katakana Phonetic Extensions: 片假名音標擴充
+Enclosed CJK Letters and Months: 包圍中日韓字母與月份
+CJK Compatibility: 中日韓兼容
+CJK Unified Ideographs Extension A: 中日韓統一表意文字擴充 A
+Yijing Hexagram Symbols: 易經六十四卦符號
+CJK Unified Ideographs: 中日韓統一表意文字
+Yi Syllables: 彝文音節
+Yi Radicals: 彝文部首
+Lisu: 傈僳
+Vai: 瓦伊
+Cyrillic Extended-B: 西里爾擴充-B
+Bamum: 巴默姆
+Modifier Tone Letters: 修飾聲調字母
+Latin Extended-D: 拉丁擴充-D
+Syloti Nagri: 西洛蒂城體
+Common Indic Number Forms: 通用印度數字形式
+Phags-pa: 八思巴
+Saurashtra: 索拉什特拉
+Devanagari Extended: 天城文擴充
+Kayah Li: 克耶利
+Rejang: 雷姜
+Hangul Jamo Extended-A: 諺文字母擴充-A
+Javanese: 爪哇
+Myanmar Extended-B: 緬甸擴充-B
+Cham: 占文
+Myanmar Extended-A: 緬甸擴充-A
+Tai Viet: 傣越
+Meetei Mayek Extensions: 米代文擴充
+Ethiopic Extended-A: 埃塞俄比亞擴充-A
+Latin Extended-E: 拉丁擴充-E
+Cherokee Supplement: 切羅基補充
+Meetei Mayek: 米代文
+Hangul Syllables: 諺文音節
+Hangul Jamo Extended-B: 諺文字母擴充-B
+High Surrogates: 高位替代
+High Private Use Surrogates: 高位私用替代
+Low Surrogates: 低位替代
+Private Use Area: 私用區域
+CJK Compatibility Ideographs: 中日韓兼容表意文字
+Alphabetic Presentation Forms: 字母顯現形式
+Arabic Presentation Forms-A: 阿拉伯顯現形式-A
+Variation Selectors: 變體選擇符
+Vertical Forms: 豎排形式
+Combining Half Marks: 組合半體記號
+CJK Compatibility Forms: 中日韓兼容形式
+Small Form Variants: 小型形式變體
+Arabic Presentation Forms-B: 阿拉伯顯現形式-B
+Halfwidth and Fullwidth Forms: 半寬與全寬形式
+Specials: 特殊
+Linear B Syllabary: 線形 B 音節文字
+Linear B Ideograms: 線形 B 表意文字
+Aegean Numbers: 愛琴數字
+Ancient Greek Numbers: 古希臘數字
+Ancient Symbols: 古代符號
+Phaistos Disc: 費斯托斯圓盤
+Lycian: 呂基亞
+Carian: 加里亞
+Coptic Epact Numbers: 科普特閏餘數字
+Old Italic: 古意大利
+Gothic: 哥特
+Old Permic: 古彼爾姆
+Ugaritic: 烏加里特
+Old Persian: 古波斯
+Deseret: 德撒律
+Shavian: 蕭伯納
+Osmanya: 伊斯馬尼亞
+Osage: 奧色治
+Elbasan: 愛爾巴桑
+Caucasian Albanian: 高加索阿爾巴尼亞
+Vithkuqi: 維斯庫奇
+Todhri: 托德里
+Linear A: 線形 A
+Latin Extended-F: 拉丁擴充-F
+Cypriot Syllabary: 塞浦路斯音節文字
+Imperial Aramaic: 王朝阿拉姆
+Palmyrene: 巴爾米拉
+Nabataean: 奈伯特
+Hatran: 哈特拉
+Phoenician: 腓尼基
+Lydian: 呂底亞
+Sidetic: 西提
+Meroitic Hieroglyphs: 麥羅埃聖書體
+Meroitic Cursive: 麥羅埃世俗體
+Kharoshthi: 佉盧
+Old South Arabian: 古南阿拉比亞
+Old North Arabian: 古北阿拉比亞
+Manichaean: 摩尼
+Avestan: 阿維斯塔
+Inscriptional Parthian: 碑銘體帕提亞
+Inscriptional Pahlavi: 碑銘體巴列維
+Psalter Pahlavi: 詩篇體巴列維
+Old Turkic: 突厥
+Old Hungarian: 古匈牙利
+Hanifi Rohingya: 哈尼菲羅興亞
+Garay: 加拉伊
+Rumi Numeral Symbols: 魯米數字符號
+Yezidi: 耶西迪
+Arabic Extended-C: 阿拉伯擴充-C
+Old Sogdian: 古粟特
+Sogdian: 粟特
+Old Uyghur: 回鶻
+Chorasmian: 花剌子模
+Elymaic: 以利買
+Brahmi: 婆羅米
+Kaithi: 開梯
+Sora Sompeng: 索拉索姆彭
+Chakma: 查克馬
+Mahajani: 默哈傑內
+Sharada: 沙勒德
+Sinhala Archaic Numbers: 僧伽羅古數字
+Khojki: 科傑基
+Multani: 木爾坦
+Khudawadi: 庫達本德
+Grantha: 格蘭他
+Tulu-Tigalari: 圖魯蒂加拉里
+Newa: 內瓦
+Tirhuta: 蒂勒胡塔
+Siddham: 悉曇
+Modi: 莫迪
+Mongolian Supplement: 蒙古文補充
+Takri: 塔克里
+Myanmar Extended-C: 緬甸擴充-C
+Ahom: 阿含
+Dogra: 道格拉
+Warang Citi: 瓦朗奇蒂
+Dives Akuru: 迪維希阿庫魯
+Nandinagari: 嫩迪城體
+Zanabazar Square: 札那巴札爾方形字母
+Soyombo: 索永布
+Unified Canadian Aboriginal Syllabics Extended-A: 統一加拿大原住民音節文字擴充-A
+Pau Cin Hau: 包欽豪
+Devanagari Extended-A: 天城文擴充-A
+Sharada Supplement: 沙勒德補充
+Sunuwar: 蘇努瓦爾
+Bhaiksuki: 比克舒基
+Marchen: 瑪爾欽體
+Masaram Gondi: 馬薩拉姆貢德
+Gunjala Gondi: 貢賈爾貢德
+Tolong Siki: 托隆西基
+Makasar: 望加錫
+Kawi: 克維
+Lisu Supplement: 傈僳補充
+Tamil Supplement: 泰米爾補充
+Cuneiform: 楔形文字
+Cuneiform Numbers and Punctuation: 楔形文字數字與標點
+Early Dynastic Cuneiform: 早王朝楔形文字
+Cypro-Minoan: 塞浦路斯-米諾斯
+Egyptian Hieroglyphs: 埃及聖書體
+Egyptian Hieroglyph Format Controls: 埃及聖書體格式控制符
+Egyptian Hieroglyphs Extended-A: 埃及聖書體擴充-A
+Anatolian Hieroglyphs: 安納托利亞聖書體
+Gurung Khema: 古隆凱瑪
+Bamum Supplement: 巴默姆補充
+Mro: 姆魯
+Tangsa: 通薩
+Bassa Vah: 巴索奧瓦
+Pahawh Hmong: 帕皓苗
+Kirat Rai: 基拉特萊
+Medefaidrin: 梅代法伊德林
+Beria Erfe: 貝利亞艾爾菲
+Miao: 苗文
+Ideographic Symbols and Punctuation: 表意文字符號與標點
+Tangut: 西夏
+Tangut Components: 西夏構件
+Khitan Small Script: 契丹小字
+Tangut Supplement: 西夏補充
+Tangut Components Supplement: 西夏構件補充
+Kana Extended-B: 假名擴充-B
+Kana Supplement: 假名補充
+Kana Extended-A: 假名擴充-A
+Small Kana Extension: 小型假名擴充
+Nushu: 女書
+Duployan: 迪普盧瓦耶
+Shorthand Format Controls: 速記格式控制符
+Symbols for Legacy Computing Supplement: 遺留計算機符號補充
+Miscellaneous Symbols Supplement: 各式符號補充
+Znamenny Musical Notation: 茲納緬內音樂符號
+Byzantine Musical Symbols: 拜占庭音樂符號
+Musical Symbols: 音樂符號
+Ancient Greek Musical Notation: 古希臘音樂記號
+Kaktovik Numerals: 卡克托維克數字
+Mayan Numerals: 瑪雅數字
+Tai Xuan Jing Symbols: 太玄經符號
+Counting Rod Numerals: 算籌數字
+Mathematical Alphanumeric Symbols: 數學字母數字符號
+Sutton SignWriting: 薩頓手語記號
+Latin Extended-G: 拉丁擴充-G
+Glagolitic Supplement: 格拉哥里補充
+Cyrillic Extended-D: 西里爾擴充-D
+Nyiakeng Puachue Hmong: 涅該布瓦啟苗
+Toto: 托托
+Wancho: 萬喬
+Nag Mundari: 納格蒙達里
+Ol Onal: 奧爾奧納爾
+Tai Yo: 泰約
+Ethiopic Extended-B: 埃塞俄比亞擴充-B
+Mende Kikakui: 門迪基卡奎
+Adlam: 阿德拉姆
+Indic Siyaq Numbers: 印度帳目數字
+Ottoman Siyaq Numbers: 奧斯曼帳目數字
+Arabic Mathematical Alphabetic Symbols: 阿拉伯數學字母符號
+Mahjong Tiles: 麻將牌
+Domino Tiles: 多米諾牌
+Playing Cards: 撲克
+Enclosed Alphanumeric Supplement: 包圍字母數字補充
+Enclosed Ideographic Supplement: 包圍表意文字補充
+Miscellaneous Symbols and Pictographs: 各式符號與圖形
+Emoticons: 表情
+Ornamental Dingbats: 裝飾雜錦
+Transport and Map Symbols: 交通與地圖符號
+Alchemical Symbols: 煉金術符號
+Geometric Shapes Extended: 幾何形狀擴充
+Supplemental Arrows-C: 補充箭頭-C
+Supplemental Symbols and Pictographs: 補充符號與圖形
+Chess Symbols: 棋符號
+Symbols and Pictographs Extended-A: 符號與圖形擴充-A
+Symbols for Legacy Computing: 遺留計算機符號
+CJK Unified Ideographs Extension B: 中日韓統一表意文字擴充 B
+CJK Unified Ideographs Extension C: 中日韓統一表意文字擴充 C
+CJK Unified Ideographs Extension D: 中日韓統一表意文字擴充 D
+CJK Unified Ideographs Extension E: 中日韓統一表意文字擴充 E
+CJK Unified Ideographs Extension F: 中日韓統一表意文字擴充 F
+CJK Unified Ideographs Extension I: 中日韓統一表意文字擴充 I
+CJK Compatibility Ideographs Supplement: 中日韓兼容表意文字補充
+CJK Unified Ideographs Extension G: 中日韓統一表意文字擴充 G
+CJK Unified Ideographs Extension H: 中日韓統一表意文字擴充 H
+CJK Unified Ideographs Extension J: 中日韓統一表意文字擴充 J
+Tags: 標籤
+Variation Selectors Supplement: 變體選擇符補充
+Supplementary Private Use Area-A: 補充私用區域-A
+Supplementary Private Use Area-B: 補充私用區域-B
