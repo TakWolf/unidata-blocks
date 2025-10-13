@@ -1,6 +1,6 @@
 [project]
 name = "unidata-blocks"
-version = "0.0.20"
+version = "0.0.21"
 description = "A library that helps query Unicode blocks by Blocks.txt"
 readme = "README.md"
 license = "MIT"
