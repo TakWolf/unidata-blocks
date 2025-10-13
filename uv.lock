@@ -340,7 +340,7 @@ wheels = [
 
 [[package]]
 name = "unidata-blocks"
-version = "0.0.18"
+version = "0.0.19"
 source = { editable = "." }
 dependencies = [
     { name = "langcodes" },
