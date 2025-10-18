@@ -16,6 +16,7 @@ def test_code_point_query():
     assert block.code_end == 0x007F
     assert block.name == 'Basic Latin'
     assert block.capacity == 128
+    assert block.assigned_count == 128
     assert block.printable_count == 95
 
     block = unidata_blocks.get_block_by_code_point(130)
@@ -23,6 +24,7 @@ def test_code_point_query():
     assert block.code_end == 0xFF
     assert block.name == 'Latin-1 Supplement'
     assert block.capacity == 128
+    assert block.assigned_count == 128
     assert block.printable_count == 94
 
 

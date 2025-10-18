@@ -1,4 +1,5 @@
 import re
+import unicodedata
 from importlib import resources
 from typing import Any
 
@@ -41,6 +42,7 @@ class UnicodeBlock:
     code_end: int
     name: str
     capacity: int
+    assigned_count: int
     printable_count: int
 
     def __init__(self, code_start: int, code_end: int, name: str):
@@ -48,9 +50,14 @@ class UnicodeBlock:
         self.code_end = code_end
         self.name = name
         self.capacity = code_end - code_start + 1
+        self.assigned_count = 0
         self.printable_count = 0
         for code_point in range(code_start, code_end + 1):
-            if chr(code_point).isprintable():
+            c = chr(code_point)
+            category = unicodedata.category(c)
+            if category != 'Cn':
+                self.assigned_count += 1
+            if c.isprintable():
                 self.printable_count += 1
 
     def __contains__(self, item: Any) -> bool:
