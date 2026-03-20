@@ -50,7 +50,7 @@ Hanunoo: 哈努努奧
 Buhid: 布希德
 Tagbanwa: 蒂亞格班瓦
 Khmer: 高棉
-Mongolian: 蒙古文
+Mongolian: 蒙文
 Unified Canadian Aboriginal Syllabics Extended: 統一加拿大原住民音節文字擴充
 Limbu: 林布
 Tai Le: 傣㐻
@@ -136,7 +136,7 @@ Phags-pa: 八思巴
 Saurashtra: 索拉什特拉
 Devanagari Extended: 天城文擴充
 Kayah Li: 克耶利
-Rejang: 雷姜
+Rejang: 勒姜
 Hangul Jamo Extended-A: 諺文字母擴充-A
 Javanese: 爪哇
 Myanmar Extended-B: 緬甸擴充-B
@@ -235,7 +235,7 @@ Newa: 內瓦
 Tirhuta: 蒂勒胡塔
 Siddham: 悉曇
 Modi: 莫迪
-Mongolian Supplement: 蒙古文補充
+Mongolian Supplement: 蒙文補充
 Takri: 塔克里
 Myanmar Extended-C: 緬甸擴充-C
 Ahom: 阿含

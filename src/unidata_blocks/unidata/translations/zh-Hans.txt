@@ -23,7 +23,7 @@ Mandaic: 曼德恩
 Syriac Supplement: 叙利亚增补
 Arabic Extended-B: 阿拉伯扩充-B
 Arabic Extended-A: 阿拉伯扩充-A
-Devanagari: 天城体
+Devanagari: 天城文
 Bengali: 孟加拉
 Gurmukhi: 果鲁穆奇
 Gujarati: 古吉拉特
@@ -134,9 +134,9 @@ Syloti Nagri: 西洛蒂城体
 Common Indic Number Forms: 通用印度数字形式
 Phags-pa: 八思巴
 Saurashtra: 索拉什特拉
-Devanagari Extended: 天城体扩充
+Devanagari Extended: 天城文扩充
 Kayah Li: 克耶利
-Rejang: 雷姜
+Rejang: 勒姜
 Hangul Jamo Extended-A: 谚文字母扩充-A
 Javanese: 爪哇
 Myanmar Extended-B: 缅甸扩充-B
@@ -247,7 +247,7 @@ Zanabazar Square: 札那巴札尔方形字母
 Soyombo: 索永布
 Unified Canadian Aboriginal Syllabics Extended-A: 统一加拿大原住民音节文字扩充-A
 Pau Cin Hau: 包钦豪
-Devanagari Extended-A: 天城体扩充-A
+Devanagari Extended-A: 天城文扩充-A
 Sharada Supplement: 沙勒德增补
 Sunuwar: 苏努瓦尔
 Bhaiksuki: 比克舒基
