@@ -27,9 +27,9 @@ def _parse_translation(text: str) -> dict[str, str]:
         line = line.strip()
         if line == '' or line.startswith('#'):
             continue
-        tokens = line.split(':')
-        if len(tokens) == 2:
-            translation[tokens[0].strip()] = tokens[1].strip()
+        parts = line.split(':')
+        if len(parts) == 2:
+            translation[parts[0].strip()] = parts[1].strip()
     return translation
 
 
@@ -87,10 +87,10 @@ def _parse_blocks(text: str) -> tuple[str, list[UnicodeBlock]]:
         line = line.strip()
         if line == '' or line.startswith('#'):
             continue
-        tokens = re.split(r'\.\.|;\s', line)
-        code_start = int(tokens[0], 16)
-        code_end = int(tokens[1], 16)
-        name = tokens[2]
+        parts = re.split(r'\.\.|;\s', line)
+        code_start = int(parts[0], 16)
+        code_end = int(parts[1], 16)
+        name = parts[2]
         blocks.append(UnicodeBlock(code_start, code_end, name))
     return version, blocks
 
