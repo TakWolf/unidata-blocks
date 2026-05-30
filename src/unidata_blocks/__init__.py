@@ -1,3 +1,4 @@
+import bisect
 import re
 from importlib import resources
 from typing import Any
@@ -95,9 +96,6 @@ def _parse_blocks(text: str) -> tuple[str, list[UnicodeBlock]]:
     return version, blocks
 
 
-unicode_version, _blocks = _parse_blocks(_unidata_dir.joinpath('Blocks.txt').read_text('utf-8'))
-
-
 def _normalize_block_name(name: str) -> str:
     name = name.lower()
     name = name.replace('-', ' ')
@@ -106,24 +104,17 @@ def _normalize_block_name(name: str) -> str:
     return name
 
 
-def _build_block_mappings() -> tuple[dict[int, UnicodeBlock], dict[str, UnicodeBlock]]:
-    code_point_to_block = {}
-    name_to_block = {}
-
-    for block in _blocks:
-        for code_point in range(block.code_start, block.code_end + 1):
-            code_point_to_block[code_point] = block
-
-        name_to_block[_normalize_block_name(block.name)] = block
-
-    return code_point_to_block, name_to_block
-
-
-_code_point_to_block, _name_to_block = _build_block_mappings()
+unicode_version, _blocks = _parse_blocks(_unidata_dir.joinpath('Blocks.txt').read_text('utf-8'))
+_blocks.sort(key=lambda block: block.code_start)
+_block_code_starts = [block.code_start for block in _blocks]
+_name_to_block = {_normalize_block_name(block.name): block for block in _blocks}
 
 
 def get_block_by_code_point(code_point: int) -> UnicodeBlock | None:
-    return _code_point_to_block.get(code_point, None)
+    pos = bisect.bisect_right(_block_code_starts, code_point) - 1
+    if pos >= 0 and _blocks[pos].code_end >= code_point:
+        return _blocks[pos]
+    return None
 
 
 def get_block_by_chr(c: str) -> UnicodeBlock | None:
