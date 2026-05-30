@@ -28,7 +28,7 @@ def _parse_translation(text: str) -> dict[str, str]:
         line = line.strip()
         if line == '' or line.startswith('#'):
             continue
-        parts = line.split(':')
+        parts = line.split(':', 1)
         if len(parts) == 2:
             translation[parts[0].strip()] = parts[1].strip()
     return translation
