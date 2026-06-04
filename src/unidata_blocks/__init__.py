@@ -84,11 +84,12 @@ def _parse_blocks(text: str) -> tuple[str, list[UnicodeBlock]]:
     blocks = []
     lines = text.splitlines()
     version = lines[0].removeprefix('# Blocks-').removesuffix('.txt')
+    regex = re.compile(r'\.\.|;\s')
     for line in lines:
         line = line.strip()
         if line == '' or line.startswith('#'):
             continue
-        parts = re.split(r'\.\.|;\s', line)
+        parts = regex.split(line)
         code_start = int(parts[0], 16)
         code_end = int(parts[1], 16)
         name = parts[2]
