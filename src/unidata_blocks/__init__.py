@@ -127,4 +127,4 @@ def get_block_by_name(name: str) -> UnicodeBlock | None:
 
 
 def get_blocks() -> list[UnicodeBlock]:
-    return list(_blocks)
+    return _blocks.copy()
