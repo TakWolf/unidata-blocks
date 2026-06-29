@@ -15,7 +15,6 @@ def main():
     response = httpx.get('https://www.unicode.org/Public/UNIDATA/Blocks.txt')
     assert response.is_success and 'text/plain' in response.headers['Content-Type']
     unidata_dir.joinpath('Blocks.txt').write_text(response.text, 'utf-8')
-    # noinspection PyProtectedMember
     unicode_version, blocks = unidata_blocks._parse_blocks(response.text)
 
     if translations_tmp_dir.exists():
@@ -26,7 +25,6 @@ def main():
         if file_path.suffix != '.txt':
             continue
         language = langcodes.standardize_tag(file_path.stem)
-        # noinspection PyProtectedMember
         translation = unidata_blocks._parse_translation(file_path.read_text('utf-8'))
 
         with translations_tmp_dir.joinpath(f'{language}.txt').open('w', encoding='utf-8', newline='\n') as file:
