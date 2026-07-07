@@ -55,7 +55,7 @@ class UnicodeBlock:
     def __repr__(self) -> str:
         return f'{self.code_start:04X}..{self.code_end:04X}; {self.name}'
 
-    def __eq__(self, other: Any) -> bool:
+    def __eq__(self, other: object) -> bool:
         if not isinstance(other, UnicodeBlock):
             return NotImplemented
         return (self.code_start == other.code_start and
