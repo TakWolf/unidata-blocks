@@ -1,3 +1,5 @@
+import pytest
+
 import unidata_blocks
 
 
@@ -94,10 +96,40 @@ def test_i18n():
     assert block is not None
     assert block.name_localized('en') == 'Basic Latin'
     assert block.name_localized('EN') == 'Basic Latin'
-    assert block.name_localized('zh') == '基本拉丁'
-    assert block.name_localized('ZH') == '基本拉丁'
-    assert block.name_localized('zh-hans') == '基本拉丁'
-    assert block.name_localized('zh-chs') == '基本拉丁'
-    assert block.name_localized('zh-cn') == '基本拉丁'
+    assert block.name_localized('zh') == '基本拉丁字母'
+    assert block.name_localized('ZH') == '基本拉丁字母'
+    assert block.name_localized('zh-hans') == '基本拉丁字母'
+    assert block.name_localized('zh-chs') == '基本拉丁字母'
+    assert block.name_localized('zh-cn') == '基本拉丁字母'
+    assert block.name_localized('zh-sg') == '基本拉丁字母'
+    assert block.name_localized('zh-hant') == '基本拉丁字母'
+    assert block.name_localized('zh-hk') == '基本拉丁字母'
+    assert block.name_localized('zh-mo') == '基本拉丁字母'
+    assert block.name_localized('zh-tw') == '基本拉丁字母'
     assert block.name_localized('no-language') is None
     assert block.name_localized('no-language', 'abc') == 'abc'
+
+
+@pytest.mark.parametrize(
+    'block_name, zh_cn_name, zh_hk_name, zh_tw_name',
+    [
+        ('Lao', '老挝文', '老撾文', '寮文'),
+        ('Georgian', '格鲁吉亚字母', '格魯吉亞字母', '喬治亞字母'),
+        ('Optical Character Recognition', '光学字符识别', '光學字元辨識', '光學字元辨識'),
+        ('High Surrogates', '高位代理项', '高代理區', '高代理區'),
+        ('Playing Cards', '纸牌', '紙牌', '紙牌'),
+        ('Basic Latin', '基本拉丁字母', '基本拉丁字母', '基本拉丁字母'),
+        ('Cyrillic Extended-A', '西里尔字母扩充-A', '西里爾字母擴充-A', '西里爾字母擴充-A'),
+        ('Arabic Extended-A', '阿拉伯文扩充-A', '阿拉伯文擴充-A', '阿拉伯文擴充-A'),
+        ('Myanmar Extended-A', '缅甸文扩充-A', '緬甸文擴充-A', '緬甸文擴充-A'),
+        ('Tangut Components', '西夏文构件', '西夏文構件', '西夏文構件'),
+        ('Linear A', '线形文字 A', '線形文字 A', '線形文字 A'),
+    ],
+)
+def test_i18n_regional_terms(block_name: str, zh_cn_name: str, zh_hk_name: str, zh_tw_name: str):
+    block = unidata_blocks.get_block_by_name(block_name)
+    assert block is not None
+    assert block.name_localized('zh') == zh_cn_name
+    assert block.name_localized('zh-cn') == zh_cn_name
+    assert block.name_localized('zh-hk') == zh_hk_name
+    assert block.name_localized('zh-tw') == zh_tw_name
