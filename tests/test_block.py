@@ -111,7 +111,7 @@ def test_i18n():
 
 
 @pytest.mark.parametrize(
-    'block_name, zh_cn_name, zh_hk_name, zh_tw_name',
+    ('block_name', 'zh_cn_name', 'zh_hk_name', 'zh_tw_name'),
     [
         ('Lao', '老挝文', '老撾文', '寮文'),
         ('Georgian', '格鲁吉亚字母', '格魯吉亞字母', '喬治亞字母'),
