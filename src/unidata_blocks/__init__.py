@@ -5,20 +5,20 @@ from typing import Any
 
 import langcodes
 
-_unidata_dir = resources.files(__package__).joinpath('unidata')
-_translations_dir = _unidata_dir.joinpath('translations')
+_UNIDATA_DIR = resources.files(__package__).joinpath('unidata')
+_TRANSLATIONS_DIR = _UNIDATA_DIR.joinpath('translations')
 
 
 def _get_supported_languages() -> list[str]:
     languages = ['en']
-    for file_path in _translations_dir.iterdir():
+    for file_path in _TRANSLATIONS_DIR.iterdir():
         if file_path.name.endswith('.txt'):
             language = file_path.name.removesuffix('.txt')
             languages.append(language)
     return languages
 
 
-_supported_languages = _get_supported_languages()
+_SUPPORTED_LANGUAGES = _get_supported_languages()
 
 
 def _parse_translation(text: str) -> dict[str, str]:
@@ -67,7 +67,7 @@ class UnicodeBlock:
         return self.code_end - self.code_start + 1
 
     def name_localized(self, language: str, default: str | None = None) -> str | None:
-        closest_language = langcodes.closest_supported_match(language, _supported_languages)
+        closest_language = langcodes.closest_supported_match(language, _SUPPORTED_LANGUAGES)
         if closest_language is None:
             return default
         if closest_language == 'en':
@@ -75,7 +75,7 @@ class UnicodeBlock:
         if closest_language in _translations:
             translation = _translations[closest_language]
         else:
-            translation = _parse_translation(_translations_dir.joinpath(f'{closest_language}.txt').read_text('utf-8'))
+            translation = _parse_translation(_TRANSLATIONS_DIR.joinpath(f'{closest_language}.txt').read_text('utf-8'))
             _translations[closest_language] = translation
         return translation.get(self.name, default)
 
@@ -105,16 +105,16 @@ def _normalize_block_name(name: str) -> str:
     return name
 
 
-unicode_version, _blocks = _parse_blocks(_unidata_dir.joinpath('Blocks.txt').read_text('utf-8'))
-_blocks.sort(key=lambda block: block.code_start)
-_block_code_starts = [block.code_start for block in _blocks]
-_name_to_block = {_normalize_block_name(block.name): block for block in _blocks}
+unicode_version, _BLOCKS = _parse_blocks(_UNIDATA_DIR.joinpath('Blocks.txt').read_text('utf-8'))
+_BLOCKS.sort(key=lambda block: block.code_start)
+_BLOCK_CODE_STARTS = [block.code_start for block in _BLOCKS]
+_NAME_TO_BLOCK = {_normalize_block_name(block.name): block for block in _BLOCKS}
 
 
 def get_block_by_code_point(code_point: int) -> UnicodeBlock | None:
-    pos = bisect.bisect_right(_block_code_starts, code_point) - 1
-    if pos >= 0 and _blocks[pos].code_end >= code_point:
-        return _blocks[pos]
+    pos = bisect.bisect_right(_BLOCK_CODE_STARTS, code_point) - 1
+    if pos >= 0 and _BLOCKS[pos].code_end >= code_point:
+        return _BLOCKS[pos]
     return None
 
 
@@ -123,8 +123,8 @@ def get_block_by_chr(c: str) -> UnicodeBlock | None:
 
 
 def get_block_by_name(name: str) -> UnicodeBlock | None:
-    return _name_to_block.get(_normalize_block_name(name), None)
+    return _NAME_TO_BLOCK.get(_normalize_block_name(name), None)
 
 
 def get_blocks() -> list[UnicodeBlock]:
-    return _blocks.copy()
+    return _BLOCKS.copy()

@@ -1,3 +1,3 @@
 from pathlib import Path
 
-project_root_dir = Path(__file__).parent.joinpath('..').resolve()
+PROJECT_ROOT_DIR = Path(__file__).parent.joinpath('..').resolve()

@@ -4,13 +4,13 @@ import httpx
 import langcodes
 
 import unidata_blocks
-from tools import project_root_dir
+from tools import PROJECT_ROOT_DIR
 
 
 def main():
-    unidata_dir = project_root_dir.joinpath('src', 'unidata_blocks', 'unidata')
+    unidata_dir = PROJECT_ROOT_DIR.joinpath('src', 'unidata_blocks', 'unidata')
     translations_dir = unidata_dir.joinpath('translations')
-    translations_tmp_dir = project_root_dir.joinpath('build', 'translations')
+    translations_tmp_dir = PROJECT_ROOT_DIR.joinpath('build', 'translations')
 
     response = httpx.get('https://www.unicode.org/Public/UNIDATA/Blocks.txt')
     assert response.is_success and 'text/plain' in response.headers['Content-Type']
