@@ -7,7 +7,7 @@ import unidata_blocks
 from tools import PROJECT_ROOT_DIR
 
 
-def main():
+def main() -> None:
     unidata_dir = PROJECT_ROOT_DIR.joinpath('src', 'unidata_blocks', 'unidata')
     translations_dir = unidata_dir.joinpath('translations')
     translations_tmp_dir = PROJECT_ROOT_DIR.joinpath('build', 'translations')

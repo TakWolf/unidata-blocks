@@ -42,7 +42,7 @@ class UnicodeBlock:
     code_end: int
     name: str
 
-    def __init__(self, code_start: int, code_end: int, name: str):
+    def __init__(self, code_start: int, code_end: int, name: str) -> None:
         self.code_start = code_start
         self.code_end = code_end
         self.name = name

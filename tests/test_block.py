@@ -3,16 +3,16 @@ import pytest
 import unidata_blocks
 
 
-def test_unicode_version():
+def test_unicode_version() -> None:
     assert unidata_blocks.unicode_version == '17.0.0'
 
 
-def test_no_block():
+def test_no_block() -> None:
     assert unidata_blocks.get_block_by_code_point(-1) is None
     assert unidata_blocks.get_block_by_code_point(0x999999) is None
 
 
-def test_code_point_query():
+def test_code_point_query() -> None:
     block = unidata_blocks.get_block_by_code_point(30)
     assert block is not None
     assert block.code_start == 0x0000
@@ -28,7 +28,7 @@ def test_code_point_query():
     assert block.capacity == 128
 
 
-def test_chr_query():
+def test_chr_query() -> None:
     block = unidata_blocks.get_block_by_chr('A')
     assert block is not None
     assert block.code_start == 0x0000
@@ -44,7 +44,7 @@ def test_chr_query():
     assert block == unidata_blocks.get_block_by_chr('字')
 
 
-def test_name_query():
+def test_name_query() -> None:
     block = unidata_blocks.get_block_by_name('CJK Unified Ideographs')
     assert block is not None
     assert block.code_start == 0x4E00
@@ -56,13 +56,13 @@ def test_name_query():
     assert block == unidata_blocks.get_block_by_name('CJK UNIFIED IDEOGRAPHS')
 
 
-def test_all_query():
+def test_all_query() -> None:
     blocks = unidata_blocks.get_blocks()
     assert len(blocks) > 0
     assert blocks[0].name == 'Basic Latin'
 
 
-def test_to_str():
+def test_to_str() -> None:
     block = unidata_blocks.get_block_by_code_point(0x0000)
     assert block is not None
     assert str(block) == '0000..007F; Basic Latin'
@@ -80,7 +80,7 @@ def test_to_str():
     assert str(block) == '100000..10FFFF; Supplementary Private Use Area-B'
 
 
-def test_contains():
+def test_contains() -> None:
     block = unidata_blocks.get_block_by_code_point(0x4E00)
     assert block is not None
     assert 0x4E00 in block
@@ -91,7 +91,7 @@ def test_contains():
     assert '0x5000' not in block
 
 
-def test_i18n():
+def test_i18n() -> None:
     block = unidata_blocks.get_block_by_code_point(0x0000)
     assert block is not None
     assert block.name_localized('en') == 'Basic Latin'
@@ -126,7 +126,7 @@ def test_i18n():
         ('Linear A', '线形文字 A', '線形文字 A', '線形文字 A'),
     ],
 )
-def test_i18n_regional_terms(block_name: str, zh_cn_name: str, zh_hk_name: str, zh_tw_name: str):
+def test_i18n_regional_terms(block_name: str, zh_cn_name: str, zh_hk_name: str, zh_tw_name: str) -> None:
     block = unidata_blocks.get_block_by_name(block_name)
     assert block is not None
     assert block.name_localized('zh') == zh_cn_name
