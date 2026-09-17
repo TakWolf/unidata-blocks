@@ -1,4 +1,4 @@
-# Unicode: 17.0.0
+# Unicode: 18.0.0
 # zh-TW
 
 Basic Latin: 基本拉丁字母
@@ -255,6 +255,7 @@ Marchen: 瑪爾欽體
 Masaram Gondi: 馬薩拉姆貢德文
 Gunjala Gondi: 貢賈爾貢德文
 Tolong Siki: 托隆西基文
+Bengali Supplement: 孟加拉文補充
 Makasar: 望加錫文
 Kawi: 克維文
 Lisu Supplement: 傈僳文補充
@@ -262,6 +263,7 @@ Tamil Supplement: 泰米爾文補充
 Cuneiform: 楔形文字
 Cuneiform Numbers and Punctuation: 楔形文字數字與標點
 Early Dynastic Cuneiform: 早王朝楔形文字
+Archaic Cuneiform Numerals: 古代楔形文字數字
 Cypro-Minoan: 塞浦路斯-米諾斯文字
 Egyptian Hieroglyphs: 埃及聖書體
 Egyptian Hieroglyph Format Controls: 埃及聖書體格式控制符
@@ -283,6 +285,8 @@ Tangut Components: 西夏文構件
 Khitan Small Script: 契丹小字
 Tangut Supplement: 西夏文補充
 Tangut Components Supplement: 西夏文構件補充
+Jurchen: 女真文
+Jurchen Radicals: 女真文部首
 Kana Extended-B: 假名擴充-B
 Kana Supplement: 假名補充
 Kana Extended-A: 假名擴充-A
@@ -296,12 +300,14 @@ Znamenny Musical Notation: 茲納緬內音樂符號
 Byzantine Musical Symbols: 拜占庭音樂符號
 Musical Symbols: 音樂符號
 Ancient Greek Musical Notation: 古希臘音樂記號
+Musical Symbols Supplement: 音樂符號補充
 Kaktovik Numerals: 卡克托維克數字
 Mayan Numerals: 瑪雅數字
 Tai Xuan Jing Symbols: 太玄經符號
 Counting Rod Numerals: 算籌數字
 Mathematical Alphanumeric Symbols: 數學字母數字符號
 Sutton SignWriting: 薩頓手語書寫
+Miscellaneous Symbols and Arrows Extended: 雜項符號與箭頭擴充
 Latin Extended-G: 拉丁字母擴充-G
 Glagolitic Supplement: 格拉哥里字母補充
 Cyrillic Extended-D: 西里爾字母擴充-D
@@ -343,6 +349,7 @@ CJK Compatibility Ideographs Supplement: 中日韓相容表意文字補充
 CJK Unified Ideographs Extension G: 中日韓統一表意文字擴充 G
 CJK Unified Ideographs Extension H: 中日韓統一表意文字擴充 H
 CJK Unified Ideographs Extension J: 中日韓統一表意文字擴充 J
+Seal: 小篆
 Tags: 標籤
 Variation Selectors Supplement: 變體選擇符補充
 Supplementary Private Use Area-A: 補充私用區域-A

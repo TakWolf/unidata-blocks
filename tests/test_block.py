@@ -4,7 +4,7 @@ import unidata_blocks
 
 
 def test_unicode_version() -> None:
-    assert unidata_blocks.unicode_version == '17.0.0'
+    assert unidata_blocks.unicode_version == '18.0.0'
 
 
 def test_no_block() -> None:
