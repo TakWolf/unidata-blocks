@@ -21,9 +21,10 @@ def main() -> None:
         shutil.rmtree(translations_tmp_dir)
     translations_tmp_dir.mkdir(parents=True)
 
-    for file_path in translations_dir.iterdir():
-        if file_path.suffix != '.txt':
+    for file_path in translations_dir.glob('*.txt'):
+        if not file_path.is_file():
             continue
+
         language = langcodes.standardize_tag(file_path.stem)
         translation = unidata_blocks._parse_translation(file_path.read_text('utf-8'))
 

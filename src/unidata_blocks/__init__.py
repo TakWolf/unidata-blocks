@@ -12,7 +12,7 @@ _TRANSLATIONS_DIR = _UNIDATA_DIR.joinpath('translations')
 def _get_supported_languages() -> list[str]:
     languages = ['en']
     for file_path in _TRANSLATIONS_DIR.iterdir():
-        if file_path.name.endswith('.txt'):
+        if file_path.is_file() and file_path.name.endswith('.txt'):
             language = file_path.name.removesuffix('.txt')
             languages.append(language)
     return languages
