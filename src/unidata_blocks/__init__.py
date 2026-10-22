@@ -3,38 +3,7 @@ import re
 from importlib import resources
 from typing import Any
 
-import langcodes
-
 _UNIDATA_DIR = resources.files(__package__).joinpath('unidata')
-_TRANSLATIONS_DIR = _UNIDATA_DIR.joinpath('translations')
-
-
-def _get_supported_languages() -> list[str]:
-    languages = ['en']
-    for file_path in _TRANSLATIONS_DIR.iterdir():
-        if file_path.is_file() and file_path.name.endswith('.txt'):
-            language = file_path.name.removesuffix('.txt')
-            languages.append(language)
-    return languages
-
-
-_SUPPORTED_LANGUAGES = _get_supported_languages()
-
-
-def _parse_translation(text: str) -> dict[str, str]:
-    translation = {}
-    lines = text.splitlines()
-    for line in lines:
-        line = line.strip()
-        if line == '' or line.startswith('#'):
-            continue
-        parts = line.split(':', 1)
-        if len(parts) == 2:
-            translation[parts[0].strip()] = parts[1].strip()
-    return translation
-
-
-_translations = {}
 
 
 class UnicodeBlock:
@@ -65,19 +34,6 @@ class UnicodeBlock:
     @property
     def capacity(self) -> int:
         return self.code_end - self.code_start + 1
-
-    def name_localized(self, language: str, default: str | None = None) -> str | None:
-        closest_language = langcodes.closest_supported_match(language, _SUPPORTED_LANGUAGES)
-        if closest_language is None:
-            return default
-        if closest_language == 'en':
-            return self.name
-        if closest_language in _translations:
-            translation = _translations[closest_language]
-        else:
-            translation = _parse_translation(_TRANSLATIONS_DIR.joinpath(f'{closest_language}.txt').read_text('utf-8'))
-            _translations[closest_language] = translation
-        return translation.get(self.name, default)
 
 
 def _parse_blocks(text: str) -> tuple[str, list[UnicodeBlock]]:
