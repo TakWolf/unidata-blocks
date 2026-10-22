@@ -1,5 +1,6 @@
 import bisect
 
+from unidata_blocks.block import UnicodeBlock
 from unidata_blocks.meta import *
 
 
