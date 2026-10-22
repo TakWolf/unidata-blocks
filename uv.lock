@@ -265,7 +265,7 @@ wheels = [
 
 [[package]]
 name = "unidata-blocks"
-version = "0.0.28"
+version = "18.0.0"
 source = { editable = "." }
 
 [package.dev-dependencies]
