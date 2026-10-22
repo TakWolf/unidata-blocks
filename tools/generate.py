@@ -33,6 +33,13 @@ def main() -> None:
     meta_lines.append('')
     meta_lines.append('from unidata_blocks.block import UnicodeBlock')
     meta_lines.append('')
+    meta_lines.append('__all__ = [')
+    meta_lines.append("    'UNICODE_VERSION',")
+    for code_start, code_end, block_name, id_name in blocks:
+        meta_lines.append(f"    'BLOCK_{id_name}',")
+    meta_lines.append("    'BLOCKS',")
+    meta_lines.append(']')
+    meta_lines.append('')
     meta_lines.append(f'UNICODE_VERSION: Final = {unicode_version!r}')
     meta_lines.append('')
     for code_start, code_end, block_name, id_name in blocks:
