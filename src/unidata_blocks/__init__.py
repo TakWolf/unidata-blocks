@@ -1,56 +1,6 @@
 import bisect
-import re
-from importlib import resources
-from typing import Any
 
-_UNIDATA_DIR = resources.files(__package__).joinpath('unidata')
-
-
-class UnicodeBlock:
-    code_start: int
-    code_end: int
-    name: str
-
-    def __init__(self, code_start: int, code_end: int, name: str) -> None:
-        self.code_start = code_start
-        self.code_end = code_end
-        self.name = name
-
-    def __contains__(self, item: Any) -> bool:
-        if not isinstance(item, int):
-            return False
-        return self.code_start <= item <= self.code_end
-
-    def __repr__(self) -> str:
-        return f'{self.code_start:04X}..{self.code_end:04X}; {self.name}'
-
-    def __eq__(self, other: object) -> bool:
-        if not isinstance(other, UnicodeBlock):
-            return NotImplemented
-        return (self.code_start == other.code_start and
-                self.code_end == other.code_end and
-                self.name == other.name)
-
-    @property
-    def capacity(self) -> int:
-        return self.code_end - self.code_start + 1
-
-
-def _parse_blocks(text: str) -> tuple[str, list[UnicodeBlock]]:
-    blocks = []
-    lines = text.splitlines()
-    version = lines[0].removeprefix('# Blocks-').removesuffix('.txt')
-    regex = re.compile(r'\.\.|;\s')
-    for line in lines:
-        line = line.strip()
-        if line == '' or line.startswith('#'):
-            continue
-        parts = regex.split(line)
-        code_start = int(parts[0], 16)
-        code_end = int(parts[1], 16)
-        name = parts[2]
-        blocks.append(UnicodeBlock(code_start, code_end, name))
-    return version, blocks
+from unidata_blocks.meta import *
 
 
 def _normalize_block_name(name: str) -> str:
@@ -61,16 +11,14 @@ def _normalize_block_name(name: str) -> str:
     return name
 
 
-unicode_version, _BLOCKS = _parse_blocks(_UNIDATA_DIR.joinpath('Blocks.txt').read_text('utf-8'))
-_BLOCKS.sort(key=lambda block: block.code_start)
-_BLOCK_CODE_STARTS = [block.code_start for block in _BLOCKS]
-_NAME_TO_BLOCK = {_normalize_block_name(block.name): block for block in _BLOCKS}
+_BLOCK_CODE_STARTS = [block.code_start for block in BLOCKS]
+_NAME_TO_BLOCK = {_normalize_block_name(block.name): block for block in BLOCKS}
 
 
 def get_block_by_code_point(code_point: int) -> UnicodeBlock | None:
     pos = bisect.bisect_right(_BLOCK_CODE_STARTS, code_point) - 1
-    if pos >= 0 and _BLOCKS[pos].code_end >= code_point:
-        return _BLOCKS[pos]
+    if pos >= 0 and BLOCKS[pos].code_end >= code_point:
+        return BLOCKS[pos]
     return None
 
 
@@ -80,7 +28,3 @@ def get_block_by_chr(c: str) -> UnicodeBlock | None:
 
 def get_block_by_name(name: str) -> UnicodeBlock | None:
     return _NAME_TO_BLOCK.get(_normalize_block_name(name), None)
-
-
-def get_blocks() -> list[UnicodeBlock]:
-    return _BLOCKS.copy()

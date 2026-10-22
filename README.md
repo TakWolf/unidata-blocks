@@ -17,6 +17,7 @@ pip install unidata-blocks
 import unidata_blocks
 
 block = unidata_blocks.get_block_by_chr('A')
+assert block == unidata_blocks.BLOCK_BASIC_LATIN
 assert block.code_start == 0x0000
 assert block.code_end == 0x007F
 assert block.name == 'Basic Latin'

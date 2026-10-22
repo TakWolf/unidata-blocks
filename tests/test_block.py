@@ -2,7 +2,7 @@ import unidata_blocks
 
 
 def test_unicode_version() -> None:
-    assert unidata_blocks.unicode_version == '18.0.0'
+    assert unidata_blocks.UNICODE_VERSION == '18.0.0'
 
 
 def test_no_block() -> None:
@@ -12,14 +12,14 @@ def test_no_block() -> None:
 
 def test_code_point_query() -> None:
     block = unidata_blocks.get_block_by_code_point(30)
-    assert block is not None
+    assert block == unidata_blocks.BLOCK_BASIC_LATIN
     assert block.code_start == 0x0000
     assert block.code_end == 0x007F
     assert block.name == 'Basic Latin'
     assert block.capacity == 128
 
     block = unidata_blocks.get_block_by_code_point(130)
-    assert block is not None
+    assert block == unidata_blocks.BLOCK_LATIN_1_SUPPLEMENT
     assert block.code_start == 0x0080
     assert block.code_end == 0xFF
     assert block.name == 'Latin-1 Supplement'
@@ -28,14 +28,14 @@ def test_code_point_query() -> None:
 
 def test_chr_query() -> None:
     block = unidata_blocks.get_block_by_chr('A')
-    assert block is not None
+    assert block == unidata_blocks.BLOCK_BASIC_LATIN
     assert block.code_start == 0x0000
     assert block.code_end == 0x007F
     assert block.name == 'Basic Latin'
     assert block == unidata_blocks.get_block_by_chr('B')
 
     block = unidata_blocks.get_block_by_chr('汉')
-    assert block is not None
+    assert block == unidata_blocks.BLOCK_CJK_UNIFIED_IDEOGRAPHS
     assert block.code_start == 0x4E00
     assert block.code_end == 0x9FFF
     assert block.name == 'CJK Unified Ideographs'
@@ -44,7 +44,7 @@ def test_chr_query() -> None:
 
 def test_name_query() -> None:
     block = unidata_blocks.get_block_by_name('CJK Unified Ideographs')
-    assert block is not None
+    assert block == unidata_blocks.BLOCK_CJK_UNIFIED_IDEOGRAPHS
     assert block.code_start == 0x4E00
     assert block.code_end == 0x9FFF
     assert block.name == 'CJK Unified Ideographs'
@@ -54,33 +54,33 @@ def test_name_query() -> None:
     assert block == unidata_blocks.get_block_by_name('CJK UNIFIED IDEOGRAPHS')
 
 
-def test_all_query() -> None:
-    blocks = unidata_blocks.get_blocks()
+def test_blocks() -> None:
+    blocks = unidata_blocks.BLOCKS
     assert len(blocks) > 0
     assert blocks[0].name == 'Basic Latin'
 
 
 def test_to_str() -> None:
     block = unidata_blocks.get_block_by_code_point(0x0000)
-    assert block is not None
+    assert block == unidata_blocks.BLOCK_BASIC_LATIN
     assert str(block) == '0000..007F; Basic Latin'
 
     block = unidata_blocks.get_block_by_code_point(0x4E00)
-    assert block is not None
+    assert block == unidata_blocks.BLOCK_CJK_UNIFIED_IDEOGRAPHS
     assert str(block) == '4E00..9FFF; CJK Unified Ideographs'
 
     block = unidata_blocks.get_block_by_code_point(0xF0000)
-    assert block is not None
+    assert block == unidata_blocks.BLOCK_SUPPLEMENTARY_PRIVATE_USE_AREA_A
     assert str(block) == 'F0000..FFFFF; Supplementary Private Use Area-A'
 
     block = unidata_blocks.get_block_by_code_point(0x100000)
-    assert block is not None
+    assert block == unidata_blocks.BLOCK_SUPPLEMENTARY_PRIVATE_USE_AREA_B
     assert str(block) == '100000..10FFFF; Supplementary Private Use Area-B'
 
 
 def test_contains() -> None:
     block = unidata_blocks.get_block_by_code_point(0x4E00)
-    assert block is not None
+    assert block == unidata_blocks.BLOCK_CJK_UNIFIED_IDEOGRAPHS
     assert 0x4E00 in block
     assert 0x9FFF in block
     assert 0x5000 in block
