@@ -56,7 +56,7 @@ def test_name_query() -> None:
 
 def test_blocks() -> None:
     blocks = unidata_blocks.BLOCKS
-    assert len(blocks) > 0
+    assert blocks
     assert blocks[0].name == 'Basic Latin'
 
 

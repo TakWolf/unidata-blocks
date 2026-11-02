@@ -12,7 +12,7 @@ def _parse_blocks() -> tuple[str, list[tuple[int, int, str, str]]]:
     regex = re.compile(r'\.\.|;\s')
     for line in lines:
         line = line.strip()
-        if line == '' or line.startswith('#'):
+        if not line or line.startswith('#'):
             continue
 
         parts = regex.split(line)
